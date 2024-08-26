@@ -8,7 +8,7 @@ import axios from "axios";
 const createPaymentIntent = asyncHandler(async (req, res) => {
   const { amount, orderID, currency } = req.body;
   const { email, name, phone } = req.user;
-  const description = "ElevateMart Store Payment";
+  const description = "UrbarGents Store Payment";
   const successUrl = `${process.env.FRONTEND_URL}/payment/payment-successful?order_id=${orderID}`;
   const cancelUrl = `${process.env.FRONTEND_URL}/`;
   const failUrl = `${process.env.FRONTEND_URL}/payment/payment-successful?order_id=${orderID}`;

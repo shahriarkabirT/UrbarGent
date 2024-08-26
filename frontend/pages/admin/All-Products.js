@@ -151,7 +151,7 @@ const AllProducts = () => {
                           </td>
                           <td className="py-4 px-4">{product.name}</td>
                           <td className="py-4 px-4">
-                            ${product.price.toFixed(2)}
+                          ৳{product.price.toFixed(2)}
                           </td>
                           <td className="py-4 px-4">{product.quantity}</td>
                           <td className="py-4 px-4">

@@ -2,7 +2,7 @@
 To start the project:
 
 
-This section only for admin(Rijon):
+This section only for admin(Shahriar):
 
 On production scripts:
  "dev": "concurrently \"npm run server\" \"npm run client\"",

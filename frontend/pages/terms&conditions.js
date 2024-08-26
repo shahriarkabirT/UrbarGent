@@ -19,7 +19,7 @@ const TermsAndConditions = () => {
 
       <p className="mb-4">
         Welcome to Elevate Mart. By accessing our website at
-        www.elevatemart.com, you agree to these terms and conditions.
+        www.UrbarGents.com, you agree to these terms and conditions.
       </p>
 
       <h2 className="text-2xl font-semibold mt-6 mb-3">

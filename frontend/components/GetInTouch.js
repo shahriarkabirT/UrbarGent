@@ -19,14 +19,14 @@ const GetInTouch = () => {
                         Icon={Phone}
                         title="Phone"
                         details={[
-                            "Main: +8801708-562437"
+                            "Main: +8801795148792"
                         ]}
                     />
                     <ContactCard
                         Icon={Mail}
                         title="Email"
                         details={[
-                            "rijon.codeelevate@gmail.com",
+                            "shahriarkabir078@gmail.com",
                         ]}
                     />
                 </div>
