@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import Axios from "axios";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
 const verify = () => {
@@ -60,7 +60,7 @@ const verify = () => {
           <img
             className="mx-auto h-10 w-auto"
             src="https://freepnglogo.com/images/all_img/1691819865alight-motion-logo-transparent.png"
-            alt="UrbarGents logo"
+            alt="UrbanGents logo"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Verify your account

@@ -143,7 +143,7 @@ const verifyUser = asyncHandler(async (req, res) => {
   res.status(201).json({
     status: "success",
     message:
-      "Welcome to UrbarGents! Your account has been verified successfully!",
+      "Welcome to UrbanGents! Your account has been verified successfully!",
   });
 });
 

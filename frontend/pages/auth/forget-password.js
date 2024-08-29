@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { validateEmail } from "../../utils/auth";
-import { toast } from "react-toastify";
 import Axios from "axios";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { validateEmail } from "../../utils/auth";
 
 const forgetpassword = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +38,7 @@ const forgetpassword = () => {
           <img
             className="mx-auto h-10 w-auto"
             src="https://freepnglogo.com/images/all_img/1691819865alight-motion-logo-transparent.png"
-            alt="UrbarGents logo"
+            alt="UrbanGents logo"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Reset password to your account

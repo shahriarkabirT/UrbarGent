@@ -1,5 +1,5 @@
 {
-  "name": "UrbarGents",
+  "name": "unbergents",
   "version": "1.0.0",
   "type": "module",
   "description": "Ecommerce application built with the MERN stack",
@@ -15,7 +15,7 @@
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
     "generate-toc": "markdown-toc -i readme.md"
   },
-  "author": "Shahriar",
+  "author": "Rijon",
   "license": "MIT",
   "dependencies": {
     "axios": "^1.7.2",

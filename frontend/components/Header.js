@@ -1,13 +1,13 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { useSelector, useDispatch } from "react-redux";
-import { useRouter } from "next/router";
 import { useLogoutMutation } from "@/store/slices/api/authApiSlice";
-import { clearCredentials } from "@/store/slices/authSlice";
-import { toastManager } from "@/utils/toastManager";
 import { useFetchMyProfileQuery } from "@/store/slices/api/userApiSlice";
-import { setUser, deleteUser } from "@/store/slices/userSlice";
+import { clearCredentials } from "@/store/slices/authSlice";
+import { deleteUser, setUser } from "@/store/slices/userSlice";
+import { toastManager } from "@/utils/toastManager";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import CartDropdown from "./CartDropdown";
 
 const Header = () => {
@@ -77,7 +77,7 @@ const Header = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-black">
-            UrbarGents
+            UrbanGents
             </span>
           </a>
           <div className="flex md:order-2 items-center space-x-4">

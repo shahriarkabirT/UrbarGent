@@ -1,11 +1,11 @@
+import { validatePassword } from "@/utils/auth";
+import Axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import Axios from "axios";
-import { HashLoader } from "react-spinners";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOffSharp } from "react-icons/io5";
-import { validatePassword } from "@/utils/auth";
+import { HashLoader } from "react-spinners";
+import { toast } from "react-toastify";
 
 const resetPassword = () => {
   const router = useRouter();
@@ -113,7 +113,7 @@ const resetPassword = () => {
           <img
             className="mx-auto h-10 w-auto"
             src="https://freepnglogo.com/images/all_img/1691819865alight-motion-logo-transparent.png"
-            alt="UrbarGents logo"
+            alt="UrbanGents logo"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Reset your account

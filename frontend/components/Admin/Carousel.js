@@ -1,11 +1,11 @@
 // frontend/components/Carousel.js
 
-import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useFetchTopTrendingProductsQuery } from "@/store/slices/api/productApiSlice";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 const MyCarousel = () => {
   const [products, setProducts] = useState([]);
@@ -64,7 +64,7 @@ const MyCarousel = () => {
   return (
     <div>
       <h1 className="text-black font-bold text-3xl text-center pt-6 pb-10">
-        Welcome to Our UrbarGents
+        Welcome to Our UrbanGents
       </h1>
       <div className="mb-5 px-5">
         <Slider {...settings} rtl={false}>

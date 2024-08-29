@@ -1,10 +1,10 @@
+import { toastManager } from "@/utils/toastManager.js";
 import Axios from "axios";
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOffSharp } from "react-icons/io5";
 import { validate } from "../utils/auth.js";
-import { toastManager } from "@/utils/toastManager.js";
 
 const register = () => {
   const router = useRouter();
@@ -62,7 +62,7 @@ const register = () => {
           <img
             className="mx-auto h-10 w-auto"
             src="https://freepnglogo.com/images/all_img/1691819865alight-motion-logo-transparent.png"
-            alt="UrbarGents logo"
+            alt="UrbanGents logo"
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign up to your account

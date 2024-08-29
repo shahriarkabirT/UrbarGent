@@ -1,6 +1,4 @@
-import React from "react";
 import Head from "next/head";
-import { formatToBangladeshDate } from "@/utils/formatDate";
 
 const TermsAndConditions = () => {
   const date = new Date().toLocaleDateString("en-US");
@@ -8,18 +6,18 @@ const TermsAndConditions = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <Head>
-        <title>Terms and Conditions - Elevate Mart</title>
+        <title>Terms and Conditions - Urber-Gents</title>
         <meta
           name="description"
-          content="Terms and Conditions for Elevate Mart"
+          content="Terms and Conditions for Urber-Gents"
         />
       </Head>
 
       <h1 className="text-3xl font-bold mb-6">Terms and Conditions</h1>
 
       <p className="mb-4">
-        Welcome to Elevate Mart. By accessing our website at
-        www.UrbarGents.com, you agree to these terms and conditions.
+        Welcome to Urber-Gents. By accessing our website at
+        www.UrbanGents.com, you agree to these terms and conditions.
       </p>
 
       <h2 className="text-2xl font-semibold mt-6 mb-3">
@@ -72,7 +70,7 @@ const TermsAndConditions = () => {
       </h2>
       <p className="mb-4">
         If you have any questions about these Terms, please contact us at:{" "}
-        <a href="mailto:efat131226@gmail.com">support.elevatemart.com</a>
+        <a href="mailto:shahriarkabir078@gmail.com">support.urbangents.com</a>
       </p>
 
       <p className="mt-8 text-sm text-gray-600">{`Last updated: ${date}`}</p>
