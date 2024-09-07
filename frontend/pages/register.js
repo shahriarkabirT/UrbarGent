@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FaEye } from "react-icons/fa";
 import { IoEyeOffSharp } from "react-icons/io5";
 import { validate } from "../utils/auth.js";
+import Image from "next/image.js";
 
 const register = () => {
   const router = useRouter();
@@ -59,13 +60,16 @@ const register = () => {
     <div style={{ cursor: isVerifying ? "wait" : "default" }}>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            className="mx-auto h-10 w-auto"
-            src="https://freepnglogo.com/images/all_img/1691819865alight-motion-logo-transparent.png"
+          <Image
+            className="mx-auto h-13 w-auto"
+            // src="https://freepnglogo.com/images/all_img/1691819865alight-motion-logo-transparent.png"
+            src="/images/mylogo.png"
             alt="UrbanGents logo"
+            width={1200}
+            height={1000}
           />
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign up to your account
+            Sign up
           </h2>
         </div>
 

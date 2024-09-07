@@ -70,6 +70,7 @@ const Products = () => {
       </div>
       <div className="w-[80%] h-min-screen mx-auto text-center">
         <Filter state={state} dispatch={dispatch} />
+
         <div className="grid grid-cols-1 gap-[25px] sm:grid-cols-2 lg:grid-cols-3 xl:gap-[50px] w-full my-16">
           {state.products &&
             state.products.map((product) => (

@@ -30,6 +30,7 @@ const Filter = ({ state, dispatch }) => {
           size={45}
         />
       </div>
+      
       <div className="flex items-center justify-center gap-5">
         <h1>Sort By: </h1>
         <select className="p-2" value={state.sort} onChange={handleSort}>

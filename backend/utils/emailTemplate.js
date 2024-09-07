@@ -25,7 +25,7 @@ const otpEmailTemplate = (user, otp, verifyURL) => {
                     <tr>
                         <td style="text-align:center;">
                             <a href="#" title="logo" target="_blank">
-                            <img width="60" src="https://freepnglogo.com/images/all_img/1691819865alight-motion-logo-transparent.png" title="logo" alt="logo">
+                            <img width="60" src="/images/mylogo.png" title="logo" alt="logo">
                           </a>
                         </td>
                     </tr>
@@ -113,7 +113,7 @@ const passwordResetEmailTemplate = (url) => {
                     <tr>
                         <td style="text-align:center;">
                           <a href="#" title="logo" target="_blank">
-                            <img width="60" src="https://freepnglogo.com/images/all_img/1691819865alight-motion-logo-transparent.png" title="logo" alt="logo">
+                            <img width="60" src="/images/mylogo.png" title="logo" alt="logo">
                           </a>
                         </td>
                     </tr>
