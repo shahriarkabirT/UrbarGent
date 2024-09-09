@@ -24,13 +24,13 @@ const HomePageProducts = () => {
 
   return (
     <div>
-      <div className="w-[100%] mx-auto text-center pt-16">
+      <div className="w-[100%] mx-auto text-center pt-16 ">
         <div className="text-black">
-          <h1 className="text-3xl font-semibold">Discover Your Dream Products</h1>
-          <p className="text-lg p-3">Turning Aspirations into Reality with Excellence</p>
+          <h1 className="text-3xl font-semibold">Discover Your Dream Shop</h1>
+          <p className="text-lg p-3">Turning Everyday Looks into Iconic Statements</p>
         </div>
       </div>
-      <div className="w-[80%] mx-auto text-center">
+      <div className="w-[80%] mx-auto text-center text-black">
         <div className="grid grid-cols-1 gap-[25px] sm:grid-cols-3 lg:grid-cols-4 xl:gap-[50px] w-full my-8">
           {products.slice(0, visibleCount).map((product) => (
             <ProductCard productData={product} key={product._id} />

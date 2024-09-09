@@ -10,6 +10,7 @@ import {
 } from "@/store/slices/api/reviewApiSlice";
 import ReviewsList from "@/components/ReviewsList";
 import ReviewForm from "@/components/ReviewForm";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const slug = useRouter().query.slug;
@@ -50,6 +51,7 @@ const ProductDetails = () => {
 
   const addToCartFunction = () => {
     dispatch(addToCart(product));
+    toast.success("One product has been added to the cart")
   };
 
   return (

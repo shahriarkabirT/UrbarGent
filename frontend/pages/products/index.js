@@ -61,10 +61,10 @@ const Products = () => {
       <div className="w-[100%] mx-auto text-center py-10">
         <div className="text-black">
           <h1 className="text-3xl font-semibold">
-            Discover Your Dream Products
+            Discover Your Dream Shop
           </h1>
           <p className="text-lg p-3">
-            Turning Aspirations into Reality with Excellence
+          Turning Everyday Looks into Iconic Statements
           </p>
         </div>
       </div>
