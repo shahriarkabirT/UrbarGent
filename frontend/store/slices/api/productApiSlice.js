@@ -12,6 +12,7 @@ export const productApi = apiSlice.injectEndpoints({
         if (sort) queryParams.push(`sort=${sort}`);
         if (search) queryParams.push(`search=${search}`);
         const queryString = queryParams.join("&");
+        console.log(queryString);
         return {
           url: `${PRODUCT_URL}/?${queryString}`,
           method: "GET",

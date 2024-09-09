@@ -1,17 +1,23 @@
 import productModel from "../models/productModel.js";
 import asyncHandler from "../middleware/asyncHandler.js";
 import OrderModel from "../models/orderModel.js";
-
+import mongoose from "mongoose";
 // @desc    Fetch all products or filter by category
 // @route   GET /api/products
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
-  const { category, limit = 30, page = 1, sort, search } = req.query;
+
+  const { category, subCategory, limit = 30, page = 1, sort, search } = req.query;
   let filter = {};
 
   if (category) {
-    filter.category = { category };
+    if (mongoose.Types.ObjectId.isValid(category)) {
+      filter.category = category;
+    } else {
+      return res.status(400).json({ message: "Invalid category ID" });
+    }
   }
+
   if (search !== undefined) {
     filter.name = { $regex: search, $options: "i" };
   }

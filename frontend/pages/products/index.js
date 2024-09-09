@@ -9,6 +9,7 @@ const initialState = {
   totalPages: 1,
   search: "",
   sort: "",
+  category:"",
 };
 
 const reducer = (state, action) => {
@@ -23,6 +24,8 @@ const reducer = (state, action) => {
       return { ...state, search: action.payload };
     case "SET_SORT":
       return { ...state, sort: action.payload };
+    case "SET_CATEGORY":
+      return { ...state, category: action.payload };
     default:
       return state;
   }
@@ -35,6 +38,7 @@ const Products = () => {
     page: state.currentPage,
     search: state.search,
     sort: state.sort,
+    category: state.category,
   });
 
   useEffect(() => {
