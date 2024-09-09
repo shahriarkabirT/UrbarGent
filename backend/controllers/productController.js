@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 // @access  Public
 const getProducts = asyncHandler(async (req, res) => {
 
-  const { category, subCategory, limit = 30, page = 1, sort, search } = req.query;
+  const { category, limit = 30, page = 1, sort, search } = req.query;
   let filter = {};
 
   if (category) {

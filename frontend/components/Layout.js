@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
 
   if (isAdminPage) {
     return (
-      <div className="flex flex-col min-h-screen ">
+      <div className="flex flex-col min-h-screen">
         <AdminNavbar />
         <main className="flex-grow">{children}</main>
         <AdminFooter />
@@ -23,11 +23,8 @@ const Layout = ({ children }) => {
     );
   }
 
-  return (<>
-
-    
-  
-    <div className="flex flex-col min-h-screen bg-[#F5F5F5] font-serif text-black">
+  return (
+    <div className="flex flex-col min-h-screen">
       <Header />
       {isHomePage && <MyCarousel />} 
       {isHomePage && <HomePageProducts/>} {/* Render MyCarousel only on the home page */}
@@ -36,7 +33,7 @@ const Layout = ({ children }) => {
       </main>
       <Footer />
     </div>
-  </>);
+  );
 };
 
 export default Layout;

@@ -168,7 +168,7 @@ const Dashboard = () => {
             <h2 className="text-xl font-semibold mb-4">Total Revenue</h2>
             <p>{totalIncome}</p>
           </div>
-          <div className="bg-green-500 text-white shadow-md rounded-lg p-6">
+          <div className="bg-[#20ff41] text-white shadow-md rounded-lg p-6">
             <h2 className="text-xl font-semibold mb-4">Total Products Sold</h2>
             <p>{totalProductsSold}</p>
           </div>

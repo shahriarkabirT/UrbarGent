@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CartDropdown from "./CartDropdown";
-
+import Image from "next/image";
 const Header = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
@@ -83,7 +83,7 @@ const Header = () => {
           <div className="flex md:order-2 items-center space-x-4">
             {" "}
             {/* Adjusted the spacing here */}
-            {/* <div className="relative hidden md:block">
+            <div className="relative hidden md:block">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
                   className="w-4 h-4 text-gray-500"
@@ -107,7 +107,7 @@ const Header = () => {
                 className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Search..."
               />
-            </div> */}
+            </div>
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -213,11 +213,23 @@ const Header = () => {
               </div>
             )}
             {isUserLoggedIn && (
+              <div className="flex md:order-2 items-center space-x-4">
               <img
                 src={`/${user?.profilePicture}`}
                 className="w-10 h-10 rounded-full ml-4"
                 alt="Profile"
               />
+              <button
+                    onClick={toggleCart}
+                    className="relative py-2 cursor-pointer"
+                  >
+                    <Image src="/images/shopping-cart.png" width="20" height="10"></Image>
+                    <div className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                      {cart && cart.cart ? cart.cart.length : 0}
+                    </div>
+                  </button>
+              </div>
+              
             )}
           </div>
           <div
@@ -258,30 +270,16 @@ const Header = () => {
                   Contact Us
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/contactUs"
+                  className="block py-2 px-3 text-black rounded hover:bg-lightBlue-600 md:hover:bg-transparent md:hover:text-blue-800 md:p-0"
+                >
+                  About Us
+                </Link>
+              </li>
               {isUserLoggedIn && (
                 <li className="ml-6">
-                  <button
-                    onClick={toggleCart}
-                    className="relative py-2 cursor-pointer"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="1.5"
-                      stroke="currentColor"
-                      className="h-6 w-6 text-black"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-                      />
-                    </svg>
-                    <div className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
-                      {cart && cart.cart ? cart.cart.length : 0}
-                    </div>
-                  </button>
                   <CartDropdown isOpen={isCartOpen} toggleCart={toggleCart} />
                 </li>
               )}

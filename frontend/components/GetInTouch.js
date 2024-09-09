@@ -3,9 +3,9 @@ import { MapPin, Phone, Mail } from 'lucide-react';
 
 const GetInTouch = () => {
     return (
-        <div className="bg-teal-700 text-white min-h-screen flex items-center justify-center font-sans">
-            <div className="container mx-auto px-4">
-                <h1 className="text-5xl font-bold mb-12 text-center font-serif">Get In Touch</h1>
+        <div className=" text-white min-h-screen flex items-center justify-center font-sans">
+            <div className=" container mx-auto px-4">
+ 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <ContactCard
                         Icon={MapPin}
