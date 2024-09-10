@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen font-serif">
       <Header />
       {isHomePage && <MyCarousel />} 
       {isHomePage && <HomePageProducts/>} {/* Render MyCarousel only on the home page */}

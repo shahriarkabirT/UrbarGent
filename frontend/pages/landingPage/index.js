@@ -1,4 +1,4 @@
-import PromotionCard from '@/components/PromotionCardss';
+import PromotionCard from '@/components/PromotionCard';
 
 import React from 'react'
 
