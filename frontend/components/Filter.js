@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useFetchAllCategoriesQuery } from "../store/slices/api/categoryApiSlice"; 
+import { useRouter } from "next/router";
+import { useFetchAllCategoriesQuery } from "../store/slices/api/categoryApiSlice";
 
 const sortOptions = [
   { value: "", label: "Select" },
@@ -11,6 +12,20 @@ const sortOptions = [
 
 const Filter = ({ state, dispatch }) => {
   const { data: categories, isLoading, isError } = useFetchAllCategoriesQuery();
+  const router = useRouter();
+  const { category: queryCategory } = router.query; // Get category from URL
+
+  // State for managing the selected category
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  useEffect(() => {
+    if (queryCategory) {
+      setSelectedCategory(queryCategory);
+      dispatch({ type: "SET_CATEGORY", payload: queryCategory });
+    } else {
+      setSelectedCategory(state.category);
+    }
+  }, [queryCategory, state.category, dispatch]);
 
   const handleSearch = (e) => {
     dispatch({ type: "SET_SEARCH", payload: e.target.value });
@@ -21,7 +36,16 @@ const Filter = ({ state, dispatch }) => {
   };
 
   const handleCategory = (e) => {
-    dispatch({ type: "SET_CATEGORY", payload: e.target.value });
+    const selectedValue = e.target.value;
+    setSelectedCategory(selectedValue);
+    dispatch({ type: "SET_CATEGORY", payload: selectedValue });
+
+    // Update URL without reloading the page
+    router.push({
+      pathname: router.pathname,
+      // query: { ...router.query, category: selectedValue },
+      query:""
+    });
   };
 
   return (
@@ -48,7 +72,7 @@ const Filter = ({ state, dispatch }) => {
           <h1 className="mr-2">Category:</h1>
           <select
             className="p-2 border rounded-lg"
-            value={state.category}
+            value={selectedCategory}
             onChange={handleCategory}
             disabled={isLoading || isError}
           >

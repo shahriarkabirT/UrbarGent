@@ -26,7 +26,7 @@ const HomePageProducts = () => {
     <div>
       <div className="w-[100%] mx-auto text-center pt-16 ">
         <div className="text-black">
-          <h1 className="text-3xl font-semibold">Discover Your Dream Shop</h1>
+          <h1 className="text-3xl font-semibold">Unleash Your Style. Step into Your Dream Shop</h1>
           <p className="text-lg p-3">Turning Everyday Looks into Iconic Statements</p>
         </div>
       </div>

@@ -7,6 +7,9 @@ import AdminFooter from './Admin/Admin-Footer';
 import MyCarousel from './Admin/Carousel';  
 import { useRouter } from 'next/router';
 import HomePageProducts from './HomePageProducts';
+import Categories from './Categories';
+import PromotionCard from './PromotionCard';
+import FullScreenPromotionCard from './FullScreenPromotionCard'
 
 const Layout = ({ children }) => {
   const router = useRouter();
@@ -24,10 +27,13 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen font-serif">
+    <div className="flex flex-col min-h-screen font-serif text-black">
       <Header />
       {isHomePage && <MyCarousel />} 
+      {isHomePage && <Categories />}
+      {/* {isHomePage && <PromotionCard/>} */}
       {isHomePage && <HomePageProducts/>} {/* Render MyCarousel only on the home page */}
+      {isHomePage && <FullScreenPromotionCard/>}
       <main className="flex-grow">
         {children}
       </main>

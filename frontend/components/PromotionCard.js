@@ -1,49 +1,65 @@
-import { React } from "react";
-import Image from "next/image";
+// PromotionSection.js
+import React from "react";
 
-const PromotionCard = ({ offer }) => {
+const PromotionCard = ({ title, description, imageUrl, linkText }) => (
+  <div className="bg-white rounded-lg shadow-lg overflow-hidden w-80 flex-shrink-0 transition-transform transform hover:-translate-y-2 hover:shadow-2xl m-4">
+    <img src={imageUrl} alt="Product" className="w-full h-48 object-cover" />
+    <div className="p-6">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-2">{title}</h2>
+      <p className="text-gray-600 mb-4">{description}</p>
+      <a
+        href="#"
+        className="inline-block px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+      >
+        {linkText}
+      </a>
+    </div>
+  </div>
+);
+
+const PromotionSection = () => {
+  const promotions = [
+    {
+      title: "Exclusive Summer Sale!",
+      description: "Up to 50% off on selected items. Don't miss out on this limited-time offer!",
+      imageUrl: "https://via.placeholder.com/300x200",
+      linkText: "Shop Now",
+    },
+    {
+      title: "New Arrivals!",
+      description: "Discover our latest collection and get exclusive deals on new products.",
+      imageUrl: "https://via.placeholder.com/300x200",
+      linkText: "Explore",
+    },
+    {
+      title: "Flash Deals!",
+      description: "Grab these amazing products before they're gone. Limited stock available.",
+      imageUrl: "https://via.placeholder.com/300x200",
+      linkText: "Buy Now",
+    },
+    {
+      title: "Clearance Sale!",
+      description: "Final call for massive discounts on last season’s products.",
+      imageUrl: "https://via.placeholder.com/300x200",
+      linkText: "Save Big",
+    },
+  ];
+
   return (
-    <div className="flex items-center justify-center p-4">
-      <div className="flex flex-wrap md:flex-nowrap w-11/12 sm:w-4/5 lg:w-3/5 xl:w-2/3 bg-white rounded-lg overflow-hidden shadow-md lg-h-1/2">
-        <div className="w-full md:w-1/2">
-          <Image
-            // src={offerImg}
-            alt="offer"
-            width={300}
-            height={300}
-            layout="responsive"
-            objectFit="cover"
-            className="md:h-full sm:w-full md:rounded-tl-lg md:rounded-bl-lg"
+    <div className="h-screen w-full flex items-center overflow-x-scroll p-8 bg-gradient-to-r from-blue-50 to-indigo-100">
+      <div className="flex space-x-4">
+        {promotions.map((promo, index) => (
+          <PromotionCard
+            key={index}
+            title={promo.title}
+            description={promo.description}
+            imageUrl={promo.imageUrl}
+            linkText={promo.linkText}
           />
-        </div>
-        <div className="bg-yellow-500  md:w-1/2 py-4 px-10 flex flex-col justify-center items-center   md:rounded-tr-lg md:rounded-br-lg">
-          <h2 className="text-lg md:text-2xl font-bold text-gray-900 pb-2 text-center md:text-left lg:text-center">
-            {/* {offerText} */}
-          </h2>
-          <p className="text-gray-800 pb-4 text-center md:text-left">
-            Sign up for special offers and updates
-          </p>
-          <form className="w-full">
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full p-2 mb-4 border border-gray-300 rounded"
-              required
-            />
-            <button
-              type="submit"
-              className="w-full bg-green-500 text-white py-2 md:py-1 rounded"
-            >
-              Unlock Offer
-            </button>
-          </form>
-          <p className="text-gray-700 text-xs pt-4 text-center md:text-left md:text-sm">
-            By signing up, you agree to be added to our email list
-          </p>
-        </div>
+        ))}
       </div>
     </div>
   );
 };
 
-export default PromotionCard;
+export default PromotionSection;

@@ -82,6 +82,7 @@ const Header = () => {
           </a>
           <div className="flex md:order-2 items-center space-x-4">
             {" "}
+            
             {/* Adjusted the spacing here */}
             <div className="relative hidden md:block">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -270,14 +271,14 @@ const Header = () => {
                   Contact Us
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/contactUs"
                   className="block py-2 px-3 text-black rounded hover:bg-lightBlue-600 md:hover:bg-transparent md:hover:text-blue-800 md:p-0"
                 >
                   About Us
                 </Link>
-              </li>
+              </li> */}
               {isUserLoggedIn && (
                 <li className="ml-6">
                   <CartDropdown isOpen={isCartOpen} toggleCart={toggleCart} />
