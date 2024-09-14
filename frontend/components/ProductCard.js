@@ -10,23 +10,36 @@ const ProductCard = ({ productData }) => {
   };
 
   return (
-    <div className="w-[90%] mx-auto bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg overflow-hidden shadow-lg">
+    <div className="w-[100%] mx-auto bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col justify-between h-full">
+      {/* Image Section */}
       <img
         src={`/${image}`}
         alt={name}
-        className="w-full h-64 object-cover"
+        className="w-full h-64 object-cover transition-transform duration-300 hover:scale-110 cursor-pointer"
         onClick={handleViewProduct}
-        style={{ cursor: "pointer" }}
       />
-      <div className="p-4">
-        <h3 className="text-lg font-bold">{name}</h3>
-        <p className="text-gray-700">{price}&nbsp;৳</p>
-        {quantity > 0 && <p className="text-gray-500">In stock: {quantity}</p>}
-        {quantity == 0 && <p className="text-gray-500">Out of Stock.</p>}
+
+      {/* Product Details */}
+      <div className="p-3 flex flex-col flex-grow">
+        <div className="flex-grow">
+          <h3 className="text-xl font-semibold text-gray-800 mb-2">{name}</h3>
+          <p className="text-lg font-bold text-gray-900 mb-1">
+            {price} <span className="text-sm">৳</span>
+          </p>
+
+          {quantity > 0 ? (
+            <p className="text-sm text-green-600 font-medium">
+              In stock: {quantity}
+            </p>
+          ) : (
+            <p className="text-sm text-red-600 font-medium">Out of Stock</p>
+          )}
+        </div>
+
+        {/* View Product Button */}
         <div
-          className="mt-4 inline-block bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-600"
+          className="mx-12 mt-4 inline-block bg-[#6B7B8B] text-white font-semibold py-2 px-4 rounded-md transition duration-300 hover:bg-black cursor-pointer"
           onClick={handleViewProduct}
-          style={{ cursor: "pointer" }}
         >
           View Product
         </div>

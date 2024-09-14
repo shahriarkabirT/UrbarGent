@@ -3,31 +3,53 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteUser, setUser } from "@/store/slices/userSlice";
 import { addToCart } from "@/store/slices/cartSlice";
+import CartDropdown from "@/components/CartDropdown";
 import {
   useCanReviewProductQuery,
   useGetReviewsQuery,
 } from "@/store/slices/api/reviewApiSlice";
+
+import { useFetchMyProfileQuery } from "@/store/slices/api/userApiSlice";
 import ReviewsList from "@/components/ReviewsList";
 import ReviewForm from "@/components/ReviewForm";
 import { toast } from "react-toastify";
+import Link from 'next/link';
+import Login from "@/components/Login";
+
+
 
 const ProductDetails = () => {
   const slug = useRouter().query.slug;
+  
   const {
     data: product,
     error,
     isLoading,
   } = useFetchProductBySlugQuery(slug, { skip: !slug });
-
+  
   const dispatch = useDispatch();
   const router = useRouter();
   const { userInfo } = useSelector((state) => state.auth);
-
+  const { user } = useSelector((state) => state.user);
+  const  path  = router.asPath;
   const { data: reviews = [] } = useGetReviewsQuery(product?._id, { skip: !product });
   const { data: canReview } = useCanReviewProductQuery(product?._id, { skip: !product || !userInfo });
 
+  const cart = useSelector((state) => state.cart);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  
   const [averageRating, setAverageRating] = useState(0);
+  const [addToCartStatus , setAddToCartStatus] = useState(true);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  const needFetch = !!user;
+  const { data: userInformation } = useFetchMyProfileQuery(undefined, {
+    skip: needFetch,
+  });
+
 
   useEffect(() => {
     if (reviews.length > 0) {
@@ -36,6 +58,17 @@ const ProductDetails = () => {
       setAverageRating(average);
     }
   }, [reviews]);
+
+  useEffect(() => {
+    if (user) {
+      setIsUserLoggedIn(true);
+    } else if (userInfo && userInformation) {
+      dispatch(setUser(userInformation));
+      setIsUserLoggedIn(true);
+    } else {
+      setIsUserLoggedIn(false);
+    }
+  }, [userInfo, userInformation]);
 
   if (isLoading) {
     return <div className="text-center py-10">Loading...</div>;
@@ -48,11 +81,20 @@ const ProductDetails = () => {
   if (!product) {
     return <div className="text-center py-10">Product not found.</div>;
   }
-
   const addToCartFunction = () => {
     dispatch(addToCart(product));
-    toast.success("One product has been added to the cart")
+    setAddToCartStatus(false);
+    toast.success("One product has been added to the cart");
+    
   };
+
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
+  };
+
+  const loginHandler = () =>{
+    router.push('/login');
+  }
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
@@ -109,20 +151,48 @@ const ProductDetails = () => {
           </div>
 
           <div className="flex items-center justify-center">
+           {addToCartStatus && (
             <button
-              onClick={addToCartFunction}
-              className={`w-[40%] py-3 px-6 rounded-lg transition duration-300 ease-in-out transform ${
-                product.quantity > 0
-                  ? 'bg-gray-700 text-white hover:bg-gray-600'
-                  : 'bg-gray-400 text-gray-800 cursor-not-allowed'
-              }`}
-              disabled={product.quantity <= 0}
-            >
-              {product.quantity > 0 ? "Add to Cart" : "Out of Stock"}
-            </button>
+            onClick={addToCartFunction}
+            className={`w-[40%] py-3 px-6 rounded-lg transition duration-300 ease-in-out transform ${
+              product.quantity > 0
+                ? 'bg-gray-700 text-white hover:bg-gray-600'
+                : 'bg-gray-400 text-gray-800 cursor-not-allowed'
+            }`}
+            disabled={product.quantity <= 0}
+          >
+            {product.quantity > 0 ? "Add to Cart" : "Out of Stock"}
+          </button>
+            )} 
+
+            {!addToCartStatus && !isUserLoggedIn &&(
+          //   <button
+          //   onClick={loginHandler}
+          //   className="w-[40%] py-3 px-6 rounded-lg transition duration-300 ease-in-out transform bg-gray-700 text-white hover:bg-gray-600"
+          // >
+          //   Login First
+          // </button>
+              <Login path = {path}></Login>
+
+            )}
+
+            {!addToCartStatus && isUserLoggedIn &&(
+            <button
+            onClick={toggleCart}
+            className="w-[40%] py-3 px-6 rounded-lg transition duration-300 ease-in-out transform bg-gray-700 text-white hover:bg-gray-600"
+          >
+            Open Your Cart
+          </button>
+            )}
           </div>
         </div>
       </div>
+      {isUserLoggedIn && (
+                <div className="ml-6">
+                  <CartDropdown isOpen={isCartOpen} toggleCart={toggleCart} />
+                </div>
+              )}
+
 
       {/* Reviews Section */}
       <div className="mt-12 max-w-4xl mx-auto">

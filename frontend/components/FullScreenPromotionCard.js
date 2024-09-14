@@ -6,7 +6,7 @@ const FullScreenPromotionCard = () => {
     <div className="h-screen w-full flex items-center justify-center bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8">
       <div className="max-w-4xl text-center p-12 bg-white bg-opacity-10 rounded-xl shadow-2xl border border-opacity-30 border-white">
         <h1 className="text-5xl font-extrabold mb-4 tracking-tight text-white drop-shadow-lg">
-          **Unleash the Season's Best Deals!**
+          Unleash the Season's Best Deals!
         </h1>
         <p className="text-lg font-medium mb-8 text-white drop-shadow-md">
           Discover exclusive offers and unbeatable discounts on your favorite products. 

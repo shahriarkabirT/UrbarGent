@@ -7,7 +7,7 @@ import { useLoginMutation } from "../store/slices/api/authApiSlice";
 import { toastManager } from "@/utils/toastManager";
 import Link from "next/link";
 
-export default function Login() {
+export default function Login({path}) {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +28,12 @@ export default function Login() {
     try {
       const { token } = await login({ email, password }).unwrap();
       dispatch(setCredentials(token));
-      router.push("/");
+      if(path){
+        router.push(`${path}/`);
+      }else{
+        router.push("/");
+      }
+      
       toastManager.updateStatus(toastId, {
         render: "Logged in successfully",
         type: "success",

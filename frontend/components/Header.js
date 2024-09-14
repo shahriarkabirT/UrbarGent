@@ -224,7 +224,8 @@ const Header = () => {
                     onClick={toggleCart}
                     className="relative py-2 cursor-pointer"
                   >
-                    <Image src="/images/shopping-cart.png" width="20" height="10"></Image>
+                    <div>
+                    <Image src="/images/shopping-cart.png"  width="20" height="10" alt="cart"></Image></div>
                     <div className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                       {cart && cart.cart ? cart.cart.length : 0}
                     </div>
