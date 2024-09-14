@@ -1,130 +1,193 @@
+import React, { useRef } from "react";
+import Head from "next/head";
 
 const PrivacyPolicy = () => {
+  const personalInfoRef = useRef(null);
+  const usageRef = useRef(null);
+  const thirdPartyRef = useRef(null);
+  const cookiesRef = useRef(null);
+  const dataSecurityRef = useRef(null);
+  const childrenRef = useRef(null);
+  const policyChangesRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const date = new Date().toLocaleDateString("en-US");
+
   return (
-    <div className="bg-gray-100 min-h-screen">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
-          Privacy Policy for UrbanGents
+    <div className="bg-gray-100 min-h-screen flex">
+      <Head>
+        <title>Privacy Policy - UrbanGents</title>
+        <meta name="description" content="Privacy Policy for UrbanGents" />
+      </Head>
+
+      {/* Sidebar */}
+      <aside className="ml-auto mt-24 mb-8 hidden md:block w-1/4 h-screen p-8 bg-white shadow-lg sticky top-0">
+        <h2 className="text-lg font-bold mb-4">Quick Navigation</h2>
+        <ul className="space-y-4 text-gray-700">
+          <li>
+            <button
+              onClick={() => scrollToSection(personalInfoRef)}
+              className="hover:text-indigo-600"
+            >
+              Personal Information Collection
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(usageRef)}
+              className="hover:text-indigo-600"
+            >
+              Use of Information
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(thirdPartyRef)}
+              className="hover:text-indigo-600"
+            >
+              Third-Party Sharing
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(cookiesRef)}
+              className="hover:text-indigo-600"
+            >
+              Cookies and Tracking Technologies
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(dataSecurityRef)}
+              className="hover:text-indigo-600"
+            >
+              Data Security
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(childrenRef)}
+              className="hover:text-indigo-600"
+            >
+              Children's Privacy
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(policyChangesRef)}
+              className="hover:text-indigo-600"
+            >
+              Policy Changes
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(contactRef)}
+              className="hover:text-indigo-600"
+            >
+              Contact Information
+            </button>
+          </li>
+        </ul>
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex-1 container mr-16 px-0 py-8 max-w-4xl">
+        <h1 className=" text-4xl font-bold text-gray-800 mb-6 text-center">
+          Privacy Policy
         </h1>
 
-        <div className="bg-white shadow-lg rounded-lg p-8">
-          <p className="mb-6 text-gray-600">
-            If you require any more information or have any questions about our
-            privacy policy, please feel free to contact us by email at
-            <a href="mailto:contact@urbangents.com">contact@UrbanGents.com</a>
-            .
-          </p>
+        <div className="bg-white shadow-lg p-8">
+          {/* Personal Information Collection */}
+          <section ref={personalInfoRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Personal Information Collection
+            </h2>
+            <p className="mb-6 text-gray-600">
+              UrbanGents collects personal information such as name, email address, shipping address, and payment details during account registration and purchases. This data is used to fulfill orders, provide customer support, and improve your shopping experience.
+            </p>
+          </section>
 
-          <p className="mb-6 text-gray-600">
-            At www.UrbanGents.com we consider the privacy of our visitors to be
-            extremely important. This privacy policy document describes in
-            detail the types of personal information is collected and recorded
-            by www.UrbanGents.com and how we use it.
-          </p>
+          {/* Use of Information */}
+          <section ref={usageRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Use of Information
+            </h2>
+            <p className="mb-6 text-gray-600">
+              We use your information to process transactions, send order updates, provide customer service, and tailor promotions. With your consent, we may also send you newsletters or marketing materials.
+            </p>
+          </section>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
-            Log Files
-          </h2>
-          <p className="mb-6 text-gray-600">
-            Like many other Web sites, www.urbangents.com makes use of log
-            files. These files merely logs visitors to the site – usually a
-            standard procedure for hosting companies and a part of hosting
-            services's analytics. The information inside the log files includes
-            internet protocol (IP) addresses, browser type, Internet Service
-            Provider (ISP), date/time stamp, referring/exit pages, and possibly
-            the number of clicks. This information is used to analyze trends,
-            administer the site, track user's movement around the site, and
-            gather demographic information. IP addresses, and other such
-            information are not linked to any information that is personally
-            identifiable.
-          </p>
+          {/* Third-Party Sharing */}
+          <section ref={thirdPartyRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Third-Party Sharing
+            </h2>
+            <p className="mb-6 text-gray-600">
+              UrbanGents may share your information with trusted third-party service providers to facilitate payment processing, shipping, and email communication. We ensure that these partners comply with strict data privacy standards.
+            </p>
+          </section>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
-            Cookies and Web Beacons
-          </h2>
-          <p className="mb-6 text-gray-600">
-            www.UrbanGents.com uses cookies to store information about
-            visitors' preferences, to record user-specific information on which
-            pages the site visitor accesses or visits, and to personalize or
-            customize our web page content based upon visitors' browser type or
-            other information that the visitor sends via their browser.
-          </p>
+          {/* Cookies and Tracking */}
+          <section ref={cookiesRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Cookies and Tracking Technologies
+            </h2>
+            <p className="mb-6 text-gray-600">
+              Our website uses cookies and similar technologies to enhance user experience and track site activity. You can control cookies through your browser settings, but disabling them may affect your browsing experience.
+            </p>
+          </section>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
-            DoubleClick DART Cookie
-          </h2>
-          <ul className="list-disc list-inside mb-6 text-gray-600">
-            <li className="mb-2">
-              Google, as a third party vendor, uses cookies to serve ads on
-              www.UrbanGents.com.
-            </li>
-            <li className="mb-2">
-              Google's use of the DART cookie enables it to serve ads to our
-              site's visitors based upon their visit to www.UrbanGents.com and
-              other sites on the Internet.
-            </li>
-            <li className="mb-2">
-              Users may opt out of the use of the DART cookie by visiting the
-              Google ad and content network privacy policy at the following URL
-              –{" "}
-              <a
-                href="http://www.google.com/privacy_ads.html"
-                className="text-blue-600 hover:underline"
-              >
-                http://www.google.com/privacy_ads.html
+          {/* Data Security */}
+          <section ref={dataSecurityRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Data Security
+            </h2>
+            <p className="mb-6 text-gray-600">
+              We implement industry-standard security measures to protect your data. However, no online system is completely secure, and we cannot guarantee the absolute security of your information.
+            </p>
+          </section>
+
+          {/* Children's Privacy */}
+          <section ref={childrenRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Children's Privacy
+            </h2>
+            <p className="mb-6 text-gray-600">
+              UrbanGents is not intended for children under 13 years of age. We do not knowingly collect personal information from children. If we discover that we have inadvertently obtained data from a minor, we will delete it immediately.
+            </p>
+          </section>
+
+          {/* Policy Changes */}
+          <section ref={policyChangesRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Changes to This Policy
+            </h2>
+            <p className="mb-6 text-gray-600">
+              We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We encourage you to review this policy periodically to stay informed about how we protect your data.
+            </p>
+          </section>
+
+          {/* Contact Information */}
+          <section ref={contactRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Contact Information
+            </h2>
+            <p className="mb-6 text-gray-600">
+              For any questions regarding our Privacy Policy, please contact us at:{" "}
+              <a href="mailto:support@urbangents.com" className="text-blue-600 hover:underline">
+                support@urbangents.com
               </a>
-            </li>
-          </ul>
+            </p>
+          </section>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
-            Our Advertising Partners
-          </h2>
-          <p className="mb-4 text-gray-600">
-            Some of our advertising partners may use cookies and web beacons on
-            our site. Our advertising partners include:
-          </p>
-          <ul className="list-disc list-inside mb-6 text-gray-600">
-            <li>Google</li>
-            <li>Commission Junction</li>
-            <li>Amazon</li>
-            <li>Adbrite</li>
-            <li>Clickbank</li>
-            <li>Yahoo! Publisher Network</li>
-            <li>Chitika</li>
-            <li>Kontera</li>
-          </ul>
-
-          <p className="mb-6 text-gray-600 italic">
-            While each of these advertising partners has their own Privacy
-            Policy for their site, an updated and hyperlinked resource is
-            maintained here:{" "}
-            <a
-              href="https://www.privacypolicyonline.com/privacy-policy-links/"
-              className="text-blue-600 hover:underline"
-            >
-              Privacy Policy Links
-            </a>
-            .
-          </p>
-
-          {/* Add more sections here */}
-
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
-            Consent
-          </h2>
-          <p className="mb-6 text-gray-600">
-            By using our website, you hereby consent to our privacy policy and
-            agree to its terms.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
-            Update
-          </h2>
-          <p className="mb-6 text-gray-600">
-            This Privacy Policy was last updated on: Jul 20, 2024. Should we
-            update, amend or make any changes to our privacy policy, those
-            changes will be posted here.
-          </p>
+          <p className="mt-8 text-sm text-gray-600">{`Last updated: ${date}`}</p>
         </div>
       </div>
     </div>

@@ -30,6 +30,14 @@ const Footer = () => {
         </div>
 
         <ul className="flex space-x-4">
+        <li>
+            <Link
+              href="/terms&conditions"
+              className="text-black hover:text-blue-800"
+            >
+              Terms and Conditions
+            </Link>
+          </li>
           <li>
             <Link
               href="/privacy&policy"
@@ -38,14 +46,7 @@ const Footer = () => {
               Privacy Policy
             </Link>
           </li>
-          <li>
-            <Link
-              href="/terms&conditions"
-              className="text-black hover:text-blue-800"
-            >
-              Terms of Service
-            </Link>
-          </li>
+          
           <li>
             <Link href="/contactUs" className="text-black hover:text-blue-800">
               Contact Us

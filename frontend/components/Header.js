@@ -76,9 +76,10 @@ const Header = () => {
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <span className="self-center text-2xl font-semibold whitespace-nowrap text-black">
+            {/* <span className="self-center text-2xl font-semibold whitespace-nowrap text-black">
             UrbanGents
-            </span>
+            </span> */}
+            <img src="/images/mylogo.png" width={60}></img>
           </a>
           <div className="flex md:order-2 items-center space-x-4">
             {" "}
@@ -253,7 +254,7 @@ const Header = () => {
                   href="/products"
                   className="block py-2 px-3 text-black rounded hover:bg-lightBlue-600 md:hover:bg-transparent md:hover:text-blue-800 md:p-0"
                 >
-                  Products
+                  Men's World
                 </Link>
               </li>
               {/* <li>

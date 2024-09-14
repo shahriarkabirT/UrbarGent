@@ -1,79 +1,214 @@
+import React, { useRef } from "react";
 import Head from "next/head";
 
 const TermsAndConditions = () => {
+  const agreementRef = useRef(null);
+  const useRefRef = useRef(null);
+  const accountRef = useRef(null);
+  const productDetailsRef = useRef(null);
+  const pricingRef = useRef(null);
+  const intellectualPropertyRef = useRef(null);
+  const liabilityRef = useRef(null);
+  const modificationsRef = useRef(null);
+  const contactRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const date = new Date().toLocaleDateString("en-US");
-  // const formattedDate = formatToBangladeshDate(date);
+
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="bg-gray-100 min-h-screen flex">
       <Head>
-        <title>Terms and Conditions - Urber-Gents</title>
-        <meta
-          name="description"
-          content="Terms and Conditions for Urber-Gents"
-        />
+        <title>Terms and Conditions - UrbanGents</title>
+        <meta name="description" content="Terms and Conditions for UrbanGents" />
       </Head>
 
-      <h1 className="text-3xl font-bold mb-6">Terms and Conditions</h1>
+      {/* Sidebar */}
+      <aside className="ml-auto mt-24 mb-8 hidden md:block w-1/4 h-screen p-6 bg-white shadow-lg sticky top-0">
+        <h2 className="text-lg font-bold mb-4">Quick Navigation</h2>
+        <ul className="space-y-4 text-gray-700">
+          <li>
+            <button
+              onClick={() => scrollToSection(agreementRef)}
+              className="hover:text-indigo-600"
+            >
+              User Agreement
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(useRefRef)}
+              className="hover:text-indigo-600"
+            >
+              Use of Website
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(accountRef)}
+              className="hover:text-indigo-600"
+            >
+              Account Responsibilities
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(productDetailsRef)}
+              className="hover:text-indigo-600"
+            >
+              Product Information
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(pricingRef)}
+              className="hover:text-indigo-600"
+            >
+              Pricing and Payments
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(intellectualPropertyRef)}
+              className="hover:text-indigo-600"
+            >
+              Intellectual Property
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(liabilityRef)}
+              className="hover:text-indigo-600"
+            >
+              Limitation of Liability
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(modificationsRef)}
+              className="hover:text-indigo-600"
+            >
+              Terms Modifications
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection(contactRef)}
+              className="hover:text-indigo-600"
+            >
+              Contact Information
+            </button>
+          </li>
+        </ul>
+      </aside>
 
-      <p className="mb-4">
-        Welcome to Urber-Gents. By accessing our website at
-        www.UrbanGents.com, you agree to these terms and conditions.
-      </p>
+      {/* Main Content */}
+      <div className="flex-1 container mr-16 px-0 py-8 max-w-4xl">
+        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
+          Terms and Conditions
+        </h1>
 
-      <h2 className="text-2xl font-semibold mt-6 mb-3">
-        1. Acceptance of Terms
-      </h2>
-      <p className="mb-4">
-        By using our website, you agree to be bound by these Terms and
-        Conditions and all applicable laws and regulations.
-      </p>
+        <div className="bg-white shadow-lg p-8">
+          {/* User Agreement */}
+          <section ref={agreementRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              User Agreement
+            </h2>
+            <p className="mb-6 text-gray-600">
+              By accessing and using the UrbanGents website, you agree to comply with and be bound by these Terms and Conditions. This agreement applies to all users, including visitors, registered members, and individuals purchasing products from the site.
+            </p>
+          </section>
 
-      <h2 className="text-2xl font-semibold mt-6 mb-3">2. Use of Site</h2>
-      <p className="mb-4">
-        You may use our site for lawful purposes only. You must not use our site
-        in any way that causes, or may cause, damage to the site or impairment
-        of the availability or accessibility of the site.
-      </p>
+          {/* Use of Website */}
+          <section ref={useRefRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Use of Website
+            </h2>
+            <p className="mb-6 text-gray-600">
+              You agree to use UrbanGents.com solely for lawful purposes. You may not use the site in any manner that could disrupt the operation of the site, harm its infrastructure, or violate any laws.
+            </p>
+          </section>
 
-      <h2 className="text-2xl font-semibold mt-6 mb-3">
-        3. Product Information
-      </h2>
-      <p className="mb-4">
-        We strive to provide accurate product information, but we do not warrant
-        that product descriptions or other content is accurate, complete,
-        reliable, current, or error-free.
-      </p>
+          {/* Account Responsibilities */}
+          <section ref={accountRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Account Responsibilities
+            </h2>
+            <p className="mb-6 text-gray-600">
+              If you create an account with us, you are responsible for maintaining the confidentiality of your login credentials and for any activities conducted under your account.
+            </p>
+          </section>
 
-      <h2 className="text-2xl font-semibold mt-6 mb-3">
-        4. Pricing and Availability
-      </h2>
-      <p className="mb-4">
-        All prices are subject to change without notice. We reserve the right to
-        modify or discontinue any product without notice.
-      </p>
+          {/* Product Information */}
+          <section ref={productDetailsRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Product Information
+            </h2>
+            <p className="mb-6 text-gray-600">
+              We strive to provide accurate and up-to-date product descriptions. However, we do not guarantee that the information, including pricing and product images, is always free of errors.
+            </p>
+          </section>
 
-      <h2 className="text-2xl font-semibold mt-6 mb-3">5. Privacy Policy</h2>
-      <p className="mb-4">
-        Please review our Privacy Policy, which also governs your visit to our
-        website, to understand our practices.
-      </p>
+          {/* Pricing and Payments */}
+          <section ref={pricingRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Pricing and Payments
+            </h2>
+            <p className="mb-6 text-gray-600">
+              All prices listed are subject to change without notice. We accept major credit cards and other payment methods as displayed on the checkout page. Payments must be completed in full before your order is processed.
+            </p>
+          </section>
 
-      <h2 className="text-2xl font-semibold mt-6 mb-3">6. Modifications</h2>
-      <p className="mb-4">
-        We reserve the right to revise these Terms and Conditions at any time
-        without notice. By using this website, you agree to be bound by the
-        current version of these Terms and Conditions.
-      </p>
+          {/* Intellectual Property */}
+          <section ref={intellectualPropertyRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Intellectual Property
+            </h2>
+            <p className="mb-6 text-gray-600">
+              All content on UrbanGents, including logos, images, and text, is owned by UrbanGents or its licensors. Unauthorized use, reproduction, or distribution of this material is strictly prohibited.
+            </p>
+          </section>
 
-      <h2 className="text-2xl font-semibold mt-6 mb-3">
-        7. Contact Information
-      </h2>
-      <p className="mb-4">
-        If you have any questions about these Terms, please contact us at:{" "}
-        <a href="mailto:shahriarkabir078@gmail.com">support.urbangents.com</a>
-      </p>
+          {/* Limitation of Liability */}
+          <section ref={liabilityRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Limitation of Liability
+            </h2>
+            <p className="mb-6 text-gray-600">
+              UrbanGents will not be held liable for any damages arising from the use or inability to use our website, including, but not limited to, loss of profits or data.
+            </p>
+          </section>
 
-      <p className="mt-8 text-sm text-gray-600">{`Last updated: ${date}`}</p>
+          {/* Terms Modifications */}
+          <section ref={modificationsRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Terms Modifications
+            </h2>
+            <p className="mb-6 text-gray-600">
+              We reserve the right to modify these Terms and Conditions at any time. Changes will be posted on this page and are effective immediately upon publication.
+            </p>
+          </section>
+
+          {/* Contact Information */}
+          <section ref={contactRef}>
+            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+              Contact Information
+            </h2>
+            <p className="mb-6 text-gray-600">
+              For any questions regarding these terms, please contact us at:{" "}
+              <a href="mailto:support@urbangents.com" className="text-blue-600 hover:underline">
+                support@urbangents.com
+              </a>
+            </p>
+          </section>
+
+          <p className="mt-8 text-sm text-gray-600">{`Last updated: ${date}`}</p>
+        </div>
+      </div>
     </div>
   );
 };

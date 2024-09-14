@@ -27,13 +27,14 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen font-serif text-black">
+    <div className="flex flex-col min-h-screen font-serif text-black bg-[#F3F4F6]">
       <Header />
+      {isHomePage && <FullScreenPromotionCard/>}
       {isHomePage && <MyCarousel />} 
       {isHomePage && <Categories />}
       {/* {isHomePage && <PromotionCard/>} */}
       {isHomePage && <HomePageProducts/>} {/* Render MyCarousel only on the home page */}
-      {isHomePage && <FullScreenPromotionCard/>}
+      
       <main className="flex-grow">
         {children}
       </main>

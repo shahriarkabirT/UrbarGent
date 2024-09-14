@@ -2,7 +2,7 @@ import Filter from "@/components/Filter";
 import ProductCard from "@/components/ProductCard";
 import React, { useEffect, useReducer } from "react";
 import { useFetchAllProductsQuery } from "@/store/slices/api/productApiSlice";
-
+import AdBanner from "@/components/AdBanner";
 const initialState = {
   currentPage: 1,
   products: [],
@@ -62,7 +62,7 @@ const Products = () => {
 
   return (
     <>
-      <div className="w-[100%] mx-auto text-center py-10">
+      {/* <div className="w-[100%] mx-auto text-center py-10">
         <div className="text-black">
           <h1 className="text-3xl font-semibold">
           Unleash Your Style. Step into Your Dream Shop
@@ -71,7 +71,8 @@ const Products = () => {
           Turning Everyday Looks into Iconic Statements
           </p>
         </div>
-      </div>
+      </div> */}
+      <AdBanner/>
       <div className="w-[80%] h-min-screen mx-auto text-center">
         <Filter state={state} dispatch={dispatch} />
 

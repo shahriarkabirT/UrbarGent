@@ -64,7 +64,7 @@ const MyCarousel = () => {
   return (
     <div>
       <h1 className="text-black font-bold text-3xl text-center pt-6 pb-10">
-      Your Destination for Modern Style
+      UrbenGents, Your Destination for Modern Style
       </h1>
       <div className="mb-5 px-5">
         <Slider {...settings} rtl={false}>

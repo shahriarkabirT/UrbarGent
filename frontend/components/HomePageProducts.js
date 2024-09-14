@@ -30,7 +30,7 @@ const HomePageProducts = () => {
           <p className="text-lg p-3">Turning Everyday Looks into Iconic Statements</p>
         </div>
       </div>
-      <div className="w-[80%] mx-auto text-center text-black">
+      <div className="w-[98%] mx-auto text-center text-black">
         <div className="grid grid-cols-1 gap-[25px] sm:grid-cols-3 lg:grid-cols-4 xl:gap-[50px] w-full my-8">
           {products.slice(0, visibleCount).map((product) => (
             <ProductCard productData={product} key={product._id} />
