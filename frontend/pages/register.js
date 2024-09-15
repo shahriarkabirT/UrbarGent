@@ -58,41 +58,36 @@ const register = () => {
 
   return (
     <div style={{ cursor: isVerifying ? "wait" : "default" }}>
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="flex min-h-full flex-col justify-center px-6 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <Image
-            className="mx-auto h-13 w-auto"
-            // src="https://freepnglogo.com/images/all_img/1691819865alight-motion-logo-transparent.png"
+            className="mx-auto  w-auto"
             src="/images/mylogo.png"
             alt="UrbanGents logo"
             width={1200}
             height={1000}
           />
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className=" text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign up
           </h2>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+        <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-lg">
+          <form className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" onSubmit={handleSubmit}>
+            {/* Full Name */}
+            <div className="col-span-3">
+              <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900">
                 Full Name
               </label>
               <div className="mt-2">
                 <input
                   id="name"
                   name="name"
-                  type="string"
-                  autoComplete="full-name"
+                  type="text"
                   placeholder="Enter your full name"
-                  className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6 focus:outline-none"
+                  className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6"
                 />
               </div>
-
               {error?.name && (
                 <div className="px-4 py-2 text-xs text-red-800 rounded-lg bg-red-50">
                   Full name is required!
@@ -100,11 +95,9 @@ const register = () => {
               )}
             </div>
 
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+            {/* Email */}
+            <div className="col-span-3">
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
               </label>
               <div className="mt-2">
@@ -112,9 +105,8 @@ const register = () => {
                   id="email"
                   name="email"
                   type="email"
-                  autoComplete="email"
                   placeholder="Enter your email"
-                  className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6 focus:outline-none"
+                  className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6"
                 />
               </div>
               {error?.email && (
@@ -124,85 +116,70 @@ const register = () => {
               )}
             </div>
 
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+            {/* Password */}
+            <div className="col-span-1">
+              <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                 Password
               </label>
-              <div className="mt-2">
-                <div className="flex justify-between items-center px-3  w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
-                  <input
-                    id="password"
-                    name="password"
-                    type={showPassword ? "text" : "password"}
-                    autoComplete="password"
-                    placeholder="Enter a password"
-                    className="block focus:ring-transparent focus:outline-none w-full"
-                  />
-                  <div onClick={onShowPassword}>
-                    {showPassword ? <FaEye /> : <IoEyeOffSharp />}
-                  </div>
+              <div className="mt-2 flex justify-between items-center px-3 bg-white w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Enter a password"
+                  className="block focus:ring-transparent focus:outline-none w-full"
+                />
+                <div onClick={onShowPassword}>
+                  {showPassword ? <FaEye /> : <IoEyeOffSharp />}
                 </div>
-                {error?.password && Object.keys(error.password).length > 0 && (
-                  <div className="px-4 py-2 text-xs text-red-800 rounded-lg bg-red-50">
-                    <ul className="list-disc list-inside">
-                      {Object.values(error.password).map((err, index) => (
-                        <li key={index} className="px-2">
-                          {err}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
               </div>
+              {error?.password && (
+                <div className="px-4 py-2 text-xs text-red-800 rounded-lg bg-red-50">
+                  <ul className="list-disc list-inside">
+                    {Object.values(error.password).map((err, index) => (
+                      <li key={index}>{err}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
-            <div>
-              <label
-                htmlFor="passwordConfirm"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+            {/* Confirm Password */}
+            <div className="col-span-1">
+              <label htmlFor="passwordConfirm" className="block text-sm font-medium leading-6 text-gray-900">
                 Password Confirm
               </label>
-              <div className="mt-2">
-                <div className="flex justify-between items-center px-3  w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
-                  <input
-                    id="passwordConfirm"
-                    name="passwordConfirm"
-                    type={showConfirmPass ? "text" : "password"}
-                    autoComplete="password"
-                    placeholder="Enter a password"
-                    className="block focus:ring-transparent focus:outline-none w-full"
-                  />
-                  <div onClick={onShowConfirmPass}>
-                    {showConfirmPass ? <FaEye /> : <IoEyeOffSharp />}
-                  </div>
+              <div className="mt-2 flex justify-between items-center px-3 bg-white w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                <input
+                  id="passwordConfirm"
+                  name="passwordConfirm"
+                  type={showConfirmPass ? "text" : "password"}
+                  placeholder="Confirm your password"
+                  className="block focus:ring-transparent focus:outline-none w-full"
+                />
+                <div onClick={onShowConfirmPass}>
+                  {showConfirmPass ? <FaEye /> : <IoEyeOffSharp />}
                 </div>
-                {error?.passwordConfirm && (
-                  <div className="px-4 py-2 text-xs text-red-800 rounded-lg bg-red-50">
-                    Password and confirm password do not match.
-                  </div>
-                )}
               </div>
+              {error?.passwordConfirm && (
+                <div className="px-4 py-2 text-xs text-red-800 rounded-lg bg-red-50">
+                  Password and confirm password do not match.
+                </div>
+              )}
             </div>
 
-            <div>
-              <label
-                htmlFor="phone"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+            {/* Phone */}
+            <div className="col-span-1">
+              <label htmlFor="phone" className="block text-sm font-medium leading-6 text-gray-900">
                 Phone Number
               </label>
               <div className="mt-2">
                 <input
                   id="phone"
                   name="phone"
-                  type="string"
-                  autoComplete="mobile-number"
-                  placeholder="Enter your your mobile number"
-                  className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6 focus:outline-none"
+                  type="text"
+                  placeholder="Enter your phone number"
+                  className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6"
                 />
               </div>
               {error?.phone && (
@@ -212,44 +189,32 @@ const register = () => {
               )}
             </div>
 
-            <div>
-              <label
-                htmlFor="address"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
+            {/* Address */}
+            <div className="col-span-3">
+              <label htmlFor="address" className="block text-sm font-medium leading-6 text-gray-900">
                 Address
               </label>
               <div className="mt-2">
                 <input
                   id="address"
                   name="address"
-                  type="address"
-                  autoComplete="address"
+                  type="text"
                   placeholder="Enter your address"
-                  className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6 focus:outline-none"
+                  className="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6"
                 />
               </div>
             </div>
 
-            <div>
+            {/* Submit Button */}
+            <div className="col-span-3 mb-10">
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="flex w-full bg-[#4f5257] justify-center rounded-md  px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign up
+                {isVerifying ? "Verifying..." : "Sign up"}
               </button>
             </div>
           </form>
-
-          <p className="mt-10 text-center text-sm text-gray-500">
-            Already have an account? &nbsp;
-            <a
-              href="/login"
-              className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-            >
-              Sign in
-            </a>
-          </p>
         </div>
       </div>
     </div>

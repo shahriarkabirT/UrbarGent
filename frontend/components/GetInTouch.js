@@ -5,7 +5,7 @@ const GetInTouch = () => {
     return (
         <div className="bg-gradient-to-r from-blue-400 to-purple-600 text-white py-16 px-4 sm:px-6 lg:px-8">
             <div className="container mx-auto max-w-4xl">
-                <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12">Get In Touch</h1>
+                <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-12">About Us</h1>
                 <div className="flex flex-wrap justify-center gap-8">
                     <ContactCard
                         Icon={MapPin}

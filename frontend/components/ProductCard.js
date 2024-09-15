@@ -10,7 +10,7 @@ const ProductCard = ({ productData }) => {
   };
 
   return (
-    <div className="w-[100%] mx-auto bg-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col justify-between h-full">
+    <div className="w-[100%] mx-auto bg-white  overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col justify-between h-full">
       {/* Image Section */}
       <img
         src={`/${image}`}
