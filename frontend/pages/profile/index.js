@@ -122,28 +122,10 @@ const Profile = () => {
         <div className="flex justify-between py-4">
           <div className="flex items-center">
             <div className="relative">
-              <div className="absolute">
-                <FontAwesomeIcon
-                  icon={faMagnifyingGlass}
-                  style={{
-                    color: "#9c9c9c",
-                    left: "24px",
-                    padding: "15px",
-                    pointerEvents: "none",
-                  }}
-                />
-              </div>
-              <input
-                type="text"
-                placeholder="Search"
-                className="pl-10 py-2 border rounded-xl"
-              />
+              
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <img src={picture} width={35} height={20} alt="Profile" />
-            <p className="text-gray-600">{displayData.name}</p>
-          </div>
+          
         </div>
         <div className="flex flex-wrap justify-center gap-5">
           <div className="flex-grow">
@@ -200,7 +182,7 @@ const Profile = () => {
                   )}
                 </div>
               </div>
-              <div className="flex gap-5 flex-wrap">
+              <div className="flex gap-5 flex-wrap my-0">
                 <div className="flex-grow">
                   <label className="pt-3 pb-2 block text-gray-600">Phone</label>
                   {isEditing ? (
@@ -246,24 +228,8 @@ const Profile = () => {
                 </button>
               )}
             </form>
-          </div>
-          <div className="flex flex-col gap-5">
-            <div className="flex flex-col gap-5 bg-white pt-16 pb-16 justify-center items-center text-center border rounded-lg">
-              <img
-                src={picture}
-                width={120}
-                height={50}
-                className="round"
-                alt="Profile"
-              />
-              <div>
-                <h4 className="text-gray-600 text-2xl font-bold py-1">
-                  {displayData.name}
-                </h4>
-                <p className="text-gray-500  py-1">{displayData.email}</p>
-                <p className="text-gray-500 py-1">{displayData.address}</p>
-              </div>
-            </div>
+          {/* Profile Picture editing */}
+          {isEditing && 
             <div className="bg-white p-4 border rounded-lg">
               <label className="text-gray-600 text-lg">
                 Select profile photo
@@ -308,6 +274,27 @@ const Profile = () => {
                 </div>
               </div>
             </div>
+          }
+          </div>
+          
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 bg-white pt-16 pb-16 justify-center items-center text-center border rounded-lg">
+              <img
+                src={picture}
+                width={120}
+                height={50}
+                className="round"
+                alt="Profile"
+              />
+              <div>
+                <h4 className="text-gray-600 text-2xl font-bold py-1">
+                  {displayData.name}
+                </h4>
+                <p className="text-gray-500  py-1">{displayData.email}</p>
+                <p className="text-gray-500 text-justify whitespace-normal px-2">{displayData.address}</p>
+              </div>
+            </div>
+           
           </div>
         </div>
       </div>
