@@ -82,14 +82,14 @@ const OrderDetails = ({ order }) => {
   return (
     <div className="flex gap-2 sm:flex-wrap xl:flex-nowrap">
       <div className="bg-white w-2/3 shadow-lg p-6 rounded-lg">
-        <div className="bg-slate-700 p-5 text-gray-200">
+        <div className="bg-[#C2E7FF] p-5 text-black">
           <p className="text-2xl font-bold ">
             Order Details: &nbsp;{" "}
-            <span className="text-xl text-gray-300">{`#${order._id}`}</span>
+            <span className="text-xl text-black">{`#${order._id}`}</span>
           </p>
           <p>
             Date : &nbsp;
-            <span className="text-[0.9rem] leading-6 text-gray-300">
+            <span className="text-[0.9rem] leading-6 text-black">
               {formattedDate}
             </span>
           </p>
@@ -145,13 +145,22 @@ const OrderDetails = ({ order }) => {
         </div>
       </div>
       <div className="flex w-2/3 gap-2 xl:w-1/3 xl:flex-wrap">
-        <div className="bg-white text-black w-full shadow-lg p-6 mb-2 rounded-lg">
+      <div className="bg-white text-black w-full shadow-lg p-6 rounded-lg">
+          <p className="text-gray-500">Customer Details</p>
+          <p className="text-gray-500 font-bold">{order.orderBy.name}</p>
+          <p className="text-gray-500 ">Phone: &nbsp;{order.orderBy.phone}</p>
+          <p className="text-gray-500">Email: &nbsp; {order.orderBy.email}</p>
+          <p className="text-gray-500">
+            Shipping Address: &nbsp;{order.orderBy.address}
+          </p>
+        </div>
+        <div className="bg-white text-black w-full shadow-lg p-6  rounded-lg">
           <h2 className="text-gray-600 font-bold text-lg py-2">
             Payment Status:
           </h2>
           <p className="text-gray-500 pb-2">
             {order.paymentResult.status === "Success" ? (
-              <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-10 py-1 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+              <span class="w-1/4 bg-green-100 text-green-800 text-sm font-medium p-10 py-1 rounded-sm items-center gap-2">
                 Paid
               </span>
             ) : order.paymentResult.status === "Failed" ? (
@@ -224,15 +233,7 @@ const OrderDetails = ({ order }) => {
             </p>
           )}
         </div>
-        <div className="bg-white text-black w-full shadow-lg p-6 rounded-lg">
-          <p className="text-gray-500">Customer Details</p>
-          <p className="text-gray-500 font-bold">{order.orderBy.name}</p>
-          <p className="text-gray-500 ">Phone: &nbsp;{order.orderBy.phone}</p>
-          <p className="text-gray-500">Email: &nbsp; {order.orderBy.email}</p>
-          <p className="text-gray-500">
-            Shipping Address: &nbsp;{order.orderBy.address}
-          </p>
-        </div>
+        
       </div>
     </div>
   );

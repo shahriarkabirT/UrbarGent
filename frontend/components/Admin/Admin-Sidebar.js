@@ -18,139 +18,98 @@ const Sidebar = () => {
     setCategoriesDropdownOpen(!categoriesDropdownOpen);
   };
 
-  const HomeIcon = () => <span>🏠</span>;
-  const StoreIcon = () => <span>🛒</span>;
-  const OrdersIcon = () => <span>📦</span>;
-  const BalanceIcon = () => <span>💰</span>;
-  const SettingsIcon = () => <span>⚙️</span>;
-  const ChevronIcon = () => <span>⬇️</span>;
-  const MenuIcon = () => <span>🍔</span>;
-  const CloseIcon = () => <span>❌</span>;
-  const AddProductIcon = () => <span>➕</span>;
-  const AddCategoriesIcon = () => <span>📋</span>;
-  const SubCategoriesIcon = () => <span>📂</span>;
-  const OffersIcon = () => <span>🎁</span>;
-
   const navItems = [
-    { to: "/admin/dashboard", icon: <HomeIcon />, label: "Home" },
+    { to: "/admin/dashboard", label: "Home" },
     {
       label: "Product",
-      icon: <StoreIcon />,
       children: [
-        {
-          to: "/admin/All-Products",
-          label: "All Products",
-        },
-        {
-          to: "/admin/Add-Product",
-          label: "Add Product",
-          icon: <AddProductIcon />,
-        },
+        { to: "/admin/All-Products", label: "All Products" },
+        { to: "/admin/Add-Product", label: "Add Product" },
       ],
     },
     {
       label: "Categories",
-      icon: <StoreIcon />,
       children: [
-        {
-          to: "/admin/Add-Catagories",
-          label: "Add Categories",
-          icon: <AddCategoriesIcon />,
-        },
-        {
-          to: "/admin/Sub-Catagories",
-          label: "Sub Categories",
-          icon: <SubCategoriesIcon />,
-        },
+        { to: "/admin/Add-Catagories", label: "Add Categories" },
+        { to: "/admin/Sub-Catagories", label: "Sub Categories" },
       ],
     },
-    { to: "/admin/orders", icon: <OrdersIcon />, label: "Orders" },
-    // { to: "/admin/EditOffer", icon: <OffersIcon />, label: "Offer" },
-    { to: "/admin/AllUsers", label: "AllUsers" },
-    // { to: "/user-dashboard/balance", icon: <BalanceIcon />, label: "Balance" },
-    { to: "/admin/Contacts", icon: <BalanceIcon />, label: "Contact" },
-    // {
-    //   to: "/user-dashboard/settings",
-    //   icon: <SettingsIcon />,
-    //   label: "Settings",
-    // },
+    { to: "/admin/orders", label: "Orders" },
+    { to: "/admin/AllUsers", label: "Users" },
+    { to: "/admin/Contacts", label: "Contact" },
   ];
 
   return (
-    <aside className="bg-[#f8fafc] col-span-2 h-screen sticky left-0 top-0 overflow-auto p-4 lg:p-5">
-      <div className="lg:hidden flex justify-center mb-4">
-        <button
-          onClick={toggleSidebar}
-          className="text-gray-600 focus:outline-none"
-        >
-          {isOpen ? (
-            <CloseIcon className="text-2xl" />
-          ) : (
-            <MenuIcon className="text-2xl" />
-          )}
+    <aside
+      className={`bg-white text-gray-900 h-screen sticky top-0 p-5 shadow-lg transition-all ${
+        isOpen ? "w-64" : "w-16"
+      } duration-300`}
+    >
+      {/* Mobile Menu Toggle */}
+      <div className="lg:hidden flex justify-end mb-4">
+        <button onClick={toggleSidebar} className="text-gray-600 focus:outline-none">
+          {isOpen ? "❌" : "≡"}
         </button>
       </div>
-      <div className={`lg:block ${isOpen ? "block" : "hidden"}`}>
-        <nav className="flex flex-col gap-2">
+
+      <div className={`overflow-hidden ${isOpen ? "block" : "hidden lg:block"}`}>
+        <nav className="flex flex-col gap-4">
           {navItems.map((item, index) => (
             <div key={index}>
               {item.children ? (
                 <div>
                   <div
-                    className="md:p-3 bg-white rounded-sm border shadow-sm font-semibold text-black transition-all flex gap-2 cursor-pointer"
+                    className="flex items-center justify-between p-3 rounded-sm bg-gray-100 hover:bg-gray-200 cursor-pointer transition-colors"
                     onClick={
-                      item.label === "Product"
-                        ? toggleProductDropdown
-                        : toggleCategoriesDropdown
+                      item.label === "Product" ? toggleProductDropdown : toggleCategoriesDropdown
                     }
                   >
-                    <div className="mx-auto md:mx-0 md:truncate md:flex gap-2">
-                      <div className="shrink-0">{item.icon}</div>
-                      <span className="truncate hidden md:block">
-                        {item.label}
-                      </span>
-                      <div
-                        className={`ml-auto transition-transform ${
-                          item.label === "Product"
-                            ? productDropdownOpen
-                              ? "rotate-180"
-                              : ""
-                            : categoriesDropdownOpen
+                    <div className="flex items-center gap-2">
+                      {isOpen && <span className="text-sm font-medium">{item.label}</span>}
+                    </div>
+                    <div
+                      className={`transition-transform transform ${
+                        item.label === "Product"
+                          ? productDropdownOpen
                             ? "rotate-180"
                             : ""
-                        }`}
-                      >
-                        <ChevronIcon />
-                      </div>
+                          : categoriesDropdownOpen
+                          ? "rotate-180"
+                          : ""
+                      }`}
+                    >
+                      ↓
                     </div>
                   </div>
+
+                  {/* Product Dropdown */}
                   {item.label === "Product" && productDropdownOpen && (
                     <div className="ml-4 mt-2">
                       {item.children.map((child, childIndex) => (
                         <Link key={childIndex} href={child.to}>
-                          <div className="md:p-3 bg-gray-100 rounded-sm border shadow-sm font-semibold text-black transition-all flex gap-2 cursor-pointer">
-                            <div className="mx-auto md:mx-0 md:truncate md:flex gap-2">
-                              <div className="shrink-0">{child.icon}</div>
-                              <span className="truncate hidden md:block">
-                                {child.label}
-                              </span>
-                            </div>
+                          <div
+                            className={`p-3 rounded-sm transition-colors cursor-pointer ${
+                              child.label === "Add Product"
+                                ? "bg-blue-100 bg-opacity-50 hover:bg-opacity-75"
+                                : child.label === "All Products"
+                                ? "bg-green-100 bg-opacity-50 hover:bg-opacity-75"
+                                : "bg-gray-50 hover:bg-gray-100"
+                            }`}
+                          >
+                            {isOpen && <span className="text-sm font-medium">{child.label}</span>}
                           </div>
                         </Link>
                       ))}
                     </div>
                   )}
+
+                  {/* Categories Dropdown */}
                   {item.label === "Categories" && categoriesDropdownOpen && (
                     <div className="ml-4 mt-2">
                       {item.children.map((child, childIndex) => (
                         <Link key={childIndex} href={child.to}>
-                          <div className="md:p-3 bg-gray-100 rounded-sm border shadow-sm font-semibold text-black transition-all flex gap-2 cursor-pointer">
-                            <div className="mx-auto md:mx-0 md:truncate md:flex gap-2">
-                              <div className="shrink-0">{child.icon}</div>
-                              <span className="truncate hidden md:block">
-                                {child.label}
-                              </span>
-                            </div>
+                          <div className="p-3 bg-gray-50 rounded-sm hover:bg-gray-100 transition-colors cursor-pointer">
+                            {isOpen && <span className="text-sm font-medium">{child.label}</span>}
                           </div>
                         </Link>
                       ))}
@@ -159,13 +118,8 @@ const Sidebar = () => {
                 </div>
               ) : (
                 <Link href={item.to}>
-                  <div className="md:p-3 bg-white rounded-sm border shadow-sm font-semibold text-black transition-all flex gap-2 cursor-pointer">
-                    <div className="mx-auto md:mx-0 md:truncate md:flex gap-2">
-                      <div className="shrink-0">{item.icon}</div>
-                      <span className="truncate hidden md:block">
-                        {item.label}
-                      </span>
-                    </div>
+                  <div className="p-3 rounded-sm bg-gray-100 hover:bg-gray-200 cursor-pointer transition-colors">
+                    {isOpen && <span className="text-sm font-medium">{item.label}</span>}
                   </div>
                 </Link>
               )}

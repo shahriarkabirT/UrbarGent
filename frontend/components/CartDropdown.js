@@ -11,6 +11,7 @@ import { useCreateOrderMutation } from "@/store/slices/api/orderApiSlice";
 import { toastManager } from "@/utils/toastManager";
 import { useCreatePaymentIntentMutation } from "@/store/slices/api/paymentSlice";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const CartDropdown = ({ isOpen, toggleCart }) => {
   const cart = useSelector((state) => state.cart);
@@ -53,7 +54,7 @@ const CartDropdown = ({ isOpen, toggleCart }) => {
       return;
     }
     const toastId = toastManager.loading("Processing your order...");
-    const products = await cart.cart.map((item) => ({
+    const products = cart.cart.map((item) => ({
       product: item._id,
       quantity: item.quantity,
       price: item.itemPrice,
@@ -95,37 +96,54 @@ const CartDropdown = ({ isOpen, toggleCart }) => {
       });
     }
   };
+
+  // Slide-Down Effect Variants for framer-motion
+  const slideDownEffect = {
+    hidden: { opacity: 0, y: "-100%" },
+    visible: { opacity: 1, y: "0%", transition: { duration: 0.6 } },
+    exit: { opacity: 0, y: "-100%", transition: { duration: 0.5 } },
+  };
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-10">
+    <div className="fixed inset-0 z-20">
       <div
-        className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        className="fixed inset-0 bg-black bg-opacity-70 transition-opacity"
         onClick={toggleCart}
       ></div>
-      <div className="fixed inset-y-0 right-0 flex max-w-full pl-10">
-        <div className="w-screen max-w-md">
-          <div className="h-full flex flex-col bg-white shadow-xl overflow-y-auto">
-            <div className="flex-1 py-6 px-4 sm:px-6">
+
+      {/* Slide-down motion effect */}
+      <motion.div
+        className="fixed inset-0 flex items-center justify-center px-4"
+        variants={slideDownEffect}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
+        <div className="w-full max-w-lg">
+          <div className="bg-white text-black shadow-lg rounded-lg overflow-hidden">
+            <div className="py-6 px-6 sm:px-8">
               <div className="flex items-start justify-between">
-                <h2 className="text-lg font-medium text-gray-900">Your cart</h2>
+                <h2 className="text-3xl font-bold">Your Cart</h2>
                 <button
                   onClick={toggleCart}
-                  className="ml-3 flex h-7 items-center text-gray-400 hover:text-gray-500"
+                  className="ml-3 flex h-7 items-center text-black hover:text-gray-700 transition-colors"
                 >
                   <FaTimes />
                 </button>
               </div>
 
-              <ul className="mt-8 space-y-6 divide-y divide-gray-200">
+              {/* Added a max-height and overflow-y-scroll to make it scrollable */}
+              <ul className="mt-8 pr-4 space-y-6 divide-y divide-gray-200 max-h-96 overflow-auto">
                 {cart.cart.length === 0 ? (
-                  <p className="text-center text-gray-500">
+                  <p className="text-center text-gray-700">
                     Your cart is empty
                   </p>
                 ) : (
                   cart.cart.map((item) => (
                     <li key={item._id} className="flex py-6">
-                      <div className="flex-shrink-0 w-24 h-[4.5rem] overflow-hidden rounded-md border border-gray-200">
+                      <div className="flex-shrink-0 w-24 h-[4rem] overflow-hidden rounded-md border border-gray-300">
                         <Image
                           src={`/${item.image}`}
                           alt={item.name}
@@ -136,7 +154,7 @@ const CartDropdown = ({ isOpen, toggleCart }) => {
                       </div>
                       <div className="ml-4 flex-1 flex flex-col">
                         <div>
-                          <div className="flex justify-between text-base font-medium text-gray-900">
+                          <div className="flex justify-between text-lg font-semibold text-gray-900">
                             <h3>{item.name}</h3>
                             <p className="ml-4">{item.itemPrice} Tk</p>
                           </div>
@@ -145,23 +163,23 @@ const CartDropdown = ({ isOpen, toggleCart }) => {
                           </p>
                         </div>
                         <div className="flex-1 flex items-end justify-between text-sm mt-4">
-                          <p className="text-gray-500">Qty {item.quantity}</p>
+                          <p className="text-gray-600">Qty {item.quantity}</p>
                           <div className="flex space-x-4">
                             <button
                               onClick={() => handleDecrease(item)}
-                              className="text-gray-400 hover:text-gray-500"
+                              className="text-gray-500 hover:text-gray-700 transition-colors"
                             >
                               <FaMinus />
                             </button>
                             <button
                               onClick={() => handleIncrease(item)}
-                              className="text-gray-400 hover:text-gray-500"
+                              className="text-gray-500 hover:text-gray-700 transition-colors"
                             >
                               <FaPlus />
                             </button>
                             <button
                               onClick={() => handleRemove(item)}
-                              className="text-red-500 hover:text-red-600"
+                              className="text-red-500 hover:text-red-700 transition-colors"
                             >
                               <FaTimes />
                             </button>
@@ -173,8 +191,9 @@ const CartDropdown = ({ isOpen, toggleCart }) => {
                 )}
               </ul>
             </div>
-            <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
-              <div className="flex justify-between text-base font-medium text-gray-900">
+
+            <div className="border-t border-gray-200 py-6 px-6 sm:px-8">
+              <div className="flex justify-between text-lg font-semibold">
                 <p>Total amount:</p>
                 <p>{totalAmount} Tk</p>
               </div>
@@ -184,7 +203,7 @@ const CartDropdown = ({ isOpen, toggleCart }) => {
               <div className="mt-6">
                 <button
                   onClick={handleCheckout}
-                  className="w-full flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                  className="w-full flex items-center justify-center rounded-md bg-indigo-600 text-white px-6 py-3 font-bold hover:bg-indigo-700 transition-colors"
                 >
                   Checkout
                 </button>
@@ -193,7 +212,7 @@ const CartDropdown = ({ isOpen, toggleCart }) => {
                 <button
                   type="button"
                   onClick={toggleCart}
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                  className="font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
                 >
                   Continue Shopping &rarr;
                 </button>
@@ -201,7 +220,7 @@ const CartDropdown = ({ isOpen, toggleCart }) => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

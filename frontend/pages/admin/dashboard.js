@@ -1,4 +1,3 @@
-// components/Dashboard.js
 import { useEffect, useState, useMemo } from "react";
 import { Bar } from "react-chartjs-2";
 import { subMonths, startOfMonth, endOfMonth, format } from "date-fns";
@@ -79,6 +78,17 @@ const Dashboard = () => {
     }, 0);
   }, [sellReportData]);
 
+  // Calculate total sold this month
+  const totalSoldThisMonth = useMemo(() => {
+    const currentMonth = new Date().getMonth();
+    const currentMonthData = sellReportData.find((item) => {
+      const month = new Date(item.month).getMonth();
+      return month === currentMonth;
+    });
+
+    return currentMonthData ? currentMonthData.report.totalProductsSold : 0;
+  }, [sellReportData]);
+
   const totalRevenueData = sellReportData.map(
     (item) => item.report.totalRevenue
   );
@@ -104,16 +114,16 @@ const Dashboard = () => {
       {
         label: "Income",
         data: revenuePercentages,
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
+        backgroundColor: "rgba(34, 197, 94)", // Greenish background
+        // borderColor: "rgba(34, 197, 94)", // Strong green border
+        borderWidth: 2,
       },
       {
         label: "Total Products Sold",
         data: productsSoldPercentages,
-        backgroundColor: "rgba(255, 99, 132, 0.2)",
-        borderColor: "rgba(255, 99, 132, 1)",
-        borderWidth: 1,
+        backgroundColor: "rgba(59, 130, 246)", // Blueish background
+        // borderColor: "rgba(59, 130, 246, 1)", // Strong blue border
+        borderWidth: 2,
       },
     ],
   };
@@ -126,7 +136,7 @@ const Dashboard = () => {
       },
       title: {
         display: true,
-        text: "Income and Expense Chart",
+        text: "Income and Product Sales Chart",
       },
       tooltip: {
         callbacks: {
@@ -154,29 +164,40 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
       <div className="flex-1 p-10 text-black">
-        <h1 className="text-2xl font-bold mb-6">Admin Dashboard</h1>
-        <p className="mb-6">
+      <h3 className="py-4 text-3xl font-extrabold mb-10 text-gray-900 text-center tracking-wide shadow-sm">
+  Admin Dashboard
+</h3>
+
+        {/* <p className="mb-8 text-gray-600">
           Welcome to the Admin Dashboard. Here you can manage users, view
           reports, and more.
-        </p>
+        </p> */}
 
-        <div className="grid grid-cols-3 gap-6 mb-6">
-          <div className="bg-[#1781cf] text-white shadow-md rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4">Total Revenue</h2>
-            <p>{totalIncome}</p>
+        {/* Stat Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-10">
+          <div className="bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-lg rounded-sm p-8">
+            <h2 className="text-2xl font-semibold mb-4">Total Revenue</h2>
+            <p className="text-3xl font-bold">{totalIncome} BDT</p>
           </div>
-          <div className="bg-[#20ff41] text-white shadow-md rounded-lg p-6">
-            <h2 className="text-xl font-semibold mb-4">Total Products Sold</h2>
-            <p>{totalProductsSold}</p>
+          <div className="bg-gradient-to-r from-green-500 to-green-400 text-white shadow-lg rounded-sm p-8">
+            <h2 className="text-2xl font-semibold mb-4">Total Products Sold</h2>
+            <p className="text-3xl font-bold">{totalProductsSold}</p>
+          </div>
+          <div className="bg-gradient-to-r from-purple-500 to-purple-400 text-white shadow-lg rounded-sm p-8">
+            <h2 className="text-2xl font-semibold mb-4">Total Sold This Month</h2>
+            <p className="text-3xl font-bold">{totalSoldThisMonth}</p>
           </div>
         </div>
 
-        <div className="bg-white shadow-md rounded-lg p-12">
-          <h2 className="text-xl font-semibold mb-6">Graph Chart</h2>
-          <Bar data={data} options={options} height={100} />
+        {/* Chart Section */}
+        <div className="bg-white shadow-lg rounded-sm p-8 text-center">
+          {/* <h2 className="text-xl font-semibold mb-6 text-gray-700">Sales Report</h2> */}
+          <div className="p-4">
+            <Bar data={data}  options={options} height={100} />
+          </div>
         </div>
       </div>
     </div>
