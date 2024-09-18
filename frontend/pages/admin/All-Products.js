@@ -35,8 +35,12 @@ const AllProducts = () => {
   }, [productsData]);
 
   useEffect(() => {
-    handleSearch(searchQuery);
-  }, [products]);
+    if (searchQuery.trim() !== "") {
+      handleSearch(searchQuery);
+    } else {
+      setFilteredProducts(products);
+    }
+  }, [searchQuery, products]);
 
   const handleEdit = (product) => {
     setEditProduct(product);
@@ -66,7 +70,6 @@ const AllProducts = () => {
   };
 
   const handleSearch = debounce((query) => {
-    setSearchQuery(query);
     const lowerCaseQuery = query.toLowerCase();
     const filtered = products.filter((product) => {
       const nameMatch = product.name.toLowerCase().includes(lowerCaseQuery);
@@ -80,7 +83,7 @@ const AllProducts = () => {
     });
     setFilteredProducts(filtered);
     setCurrentPage(1);
-  }, 300);
+  }, 150);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -100,35 +103,33 @@ const AllProducts = () => {
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
   return (
-    <div className="flex">
+    <div className="flex bg-gray-100 min-h-screen">
       <Sidebar />
-      <div className="flex-1 p-10 text-black">
+      <div className="flex-1 p-8">
         {!isEditing && (
-          <div className="container mx-auto px-4 py-8">
-            <div className="bg-white shadow-md rounded-lg p-6">
+          <div className="container h-[100%] overflow-auto">
+            <div className="bg-white shadow-lg rounded-lg p-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-semibold text-gray-800">
-                  Product List
-                </h2>
+                <h2 className="text-3xl font-semibold text-gray-800">Products</h2>
                 <input
                   type="text"
-                  placeholder="Search products by name, category, or subcategory..."
+                  placeholder="Search products..."
                   value={searchQuery}
-                  onChange={(e) => handleSearch(e.target.value)}
-                  className="p-2 border rounded"
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="px-4 py-2 w-80 border text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
               <div className="overflow-x-auto text-center">
-                <table className="min-w-full bg-white border-collapse">
-                  <thead className="bg-gray-100">
+                <table className="min-w-full bg-white text-gray-700 shadow-lg rounded-lg">
+                  <thead className="bg-gray-50">
                     <tr className="text-center">
-                      <th className="py-3 px-4 border-b">Image</th>
-                      <th className="py-3 px-4 border-b">Name</th>
-                      <th className="py-3 px-4 border-b">Price</th>
-                      <th className="py-3 px-4 border-b">Stock</th>
-                      <th className="py-3 px-4 border-b">Category</th>
-                      <th className="py-3 px-4 border-b">SubCategory</th>
-                      <th className="py-3 px-4 border-b">Actions</th>
+                      <th className="py-3 px-6 border-b font-semibold">Image</th>
+                      <th className="py-3 px-6 border-b font-semibold">Name</th>
+                      <th className="py-3 px-6 border-b font-semibold">Price</th>
+                      <th className="py-3 px-6 border-b font-semibold">Stock</th>
+                      <th className="py-3 px-6 border-b font-semibold">Category</th>
+                      <th className="py-3 px-6 border-b font-semibold">SubCategory</th>
+                      <th className="py-3 px-6 border-b font-semibold">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -136,40 +137,36 @@ const AllProducts = () => {
                       currentProducts.map((product) => (
                         <tr
                           key={product._id}
-                          className="border-b hover:bg-gray-50 transition duration-150 ease-in-out"
+                          className="border-b hover:bg-gray-50 transition-all duration-150"
                         >
-                          <td className="py-4 px-4">
+                          <td className="py-4 px-6">
                             <Image
-                              src={
-                                `/${product.image}` || "/placeholder-image.jpg"
-                              }
+                              src={`/${product.image}` || "/placeholder-image.jpg"}
                               alt={`${product.name} image`}
                               width={50}
                               height={50}
-                              // className="absolute inset-0 w-full h-full"
+                              className="rounded-lg"
                             />
                           </td>
-                          <td className="py-4 px-4">{product.name}</td>
-                          <td className="py-4 px-4">
-                          ৳{product.price.toFixed(2)}
-                          </td>
-                          <td className="py-4 px-4">{product.quantity}</td>
-                          <td className="py-4 px-4">
+                          <td className="py-4 px-6">{product.name}</td>
+                          <td className="py-4 px-6">৳{product.price.toFixed(2)}</td>
+                          <td className="py-4 px-6">{product.quantity}</td>
+                          <td className="py-4 px-6">
                             {product.category?.name || "N/A"}
                           </td>
-                          <td className="py-4 px-4">
+                          <td className="py-4 px-6">
                             {product.subCategory?.name || "N/A"}
                           </td>
-                          <td className="py-4 px-4">
+                          <td className="py-4 px-6 flex justify-center space-x-2">
                             <button
                               onClick={() => handleEdit(product)}
-                              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"
+                              className="bg-[#4F4F4F] hover:bg-black text-white font-bold py-2 px-4 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                             >
                               Edit
                             </button>
                             <button
                               onClick={() => handleDelete(product._id)}
-                              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                              className="bg-red-600 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                             >
                               Delete
                             </button>
@@ -189,45 +186,43 @@ const AllProducts = () => {
                   </tbody>
                 </table>
               </div>
-              <div className="flex justify-between items-center mt-4">
-                <div>
-                  <span>
-                    Page {currentPage} of {totalPages}
-                  </span>
-                </div>
-                <div>
+              <div className="flex justify-between items-center mt-6">
+                <span className="text-gray-600">
+                  Page {currentPage} of {totalPages}
+                </span>
+                <div className="flex items-center space-x-2">
                   <button
                     onClick={() => handlePageChange(1)}
                     disabled={currentPage === 1}
-                    className="mr-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg disabled:opacity-50"
                   >
                     {"<<"}
                   </button>
                   <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className="mr-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg disabled:opacity-50"
                   >
                     {"<"}
                   </button>
                   <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
-                    className="mr-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg disabled:opacity-50"
                   >
                     {">"}
                   </button>
                   <button
                     onClick={() => handlePageChange(totalPages)}
                     disabled={currentPage === totalPages}
-                    className="mr-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg disabled:opacity-50"
                   >
                     {">>"}
                   </button>
                   <select
                     value={itemsPerPage}
                     onChange={handleItemsPerPageChange}
-                    className="p-2 border rounded"
+                    className="px-4 py-2 text-black border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     {[10, 20, 30, 40, 50].map((size) => (
                       <option key={size} value={size}>
