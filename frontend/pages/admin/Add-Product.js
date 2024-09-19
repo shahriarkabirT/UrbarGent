@@ -50,7 +50,6 @@ const Products = ({ editing, product, onEditComplete }) => {
   const { data: categoriesData } = useFetchAllCategoriesQuery();
   const { data: subCategoriesData } = useFetchAllSubCategoriesQuery();
   const [updateProduct] = useUpdateProductByIdMutation();
-
   useEffect(() => {
     if (categoriesData) {
       setCategories(categoriesData);
@@ -162,6 +161,9 @@ const Products = ({ editing, product, onEditComplete }) => {
       resetForm();
     }
   };
+  const  cancelHandler = () =>{
+    window.location.reload();
+  }
 
   return (
     <div className="flex">
@@ -364,7 +366,7 @@ const Products = ({ editing, product, onEditComplete }) => {
               {isEditing && (
                 <button
                   type="button"
-                  onClick={resetForm}
+                  onClick={cancelHandler}
                   className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
                   Cancel
