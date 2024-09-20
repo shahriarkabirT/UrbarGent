@@ -58,11 +58,11 @@ const OrderDetails = () => {
                       <td className="p-3">
                         <div className="flex gap-2 items-center">
                           <img
-                            src={`/${item.product.image}`}
-                            alt={item.product.name}
+                            src={`/${item.product?.image}`}
+                            alt={item.product?.name}
                             className="w-16 h-12 object-cover"
                           />
-                          <p>{item.product.name}</p>
+                          <p>{item.product?.name}</p>
                         </div>
                       </td>
                       <td className="p-3 ">{item.quantity}</td>

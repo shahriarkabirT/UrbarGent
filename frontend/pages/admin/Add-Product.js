@@ -172,11 +172,11 @@ const Products = ({ editing, product, onEditComplete }) => {
         <div className="bg-white shadow-md rounded-lg p-6 mb-6">
           <h2
             className={`text-xl font-semibold mb-4 ${
-              isEditing ? "text-blue-500" : "text-green-500"
+              isEditing ? "text-blue-500" : "text-[#35B1F4]"
             }`}
           >
             <span className={`border-b-2 border-green pb-1`}>
-              {isEditing ? "Edit Product" : "Add Product"}
+              {isEditing ? "Edit Product" : "Add Product Form"}
             </span>
           </h2>
 
@@ -357,8 +357,8 @@ const Products = ({ editing, product, onEditComplete }) => {
             <div className="flex items-center justify-between">
               <button
                 type="submit"
-                className={`bg-${isEditing ? "blue" : "green"}-500 hover:bg-${
-                  isEditing ? "blue" : "green"
+                className={`bg-${isEditing ? "blue" : "blue"}-500 hover:bg-${
+                  isEditing ? "blue" : "blue"
                 }-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline`}
               >
                 {isEditing ? "Update Product" : "Add Product"}
