@@ -101,7 +101,7 @@ const ViewOrders = () => {
         Cell: ({ value }) => (
           <span
             className={`font-bold ${
-              value === "Failed" ? "text-red-600" : "text-green-600"
+              value === "Failed" ? "text-red-600" : "text-blue-600"
             }`}
           >
             {value}
@@ -129,8 +129,8 @@ const ViewOrders = () => {
             }
             style={{
               backgroundColor: ["Initiated", "On-Hold"].includes(value)
-                ? "yellow"
-                : "green",
+                ? "red"
+                : "blue",
               color: ["Initiated", "On-Hold"].includes(value)
                 ? "black"
                 : "white",
@@ -225,11 +225,11 @@ const ViewOrders = () => {
                       {...row.getRowProps()}
                       className={`hover:bg-gray-100 transition-colors duration-300 ${
                         row.original.deliveryStatus === "Shipped"
-                          ? "bg-green-100"
+                          ? "bg-blue-100"
                           : row.original.deliveryStatus === "Delivered"
-                          ? "bg-green-200"
+                          ? "bg-blue-200"
                           : row.original.deliveryStatus === "On-Hold"
-                          ? "bg-red-100"
+                          ? "bg-blue-100"
                           : ""
                       }`}
                     >
