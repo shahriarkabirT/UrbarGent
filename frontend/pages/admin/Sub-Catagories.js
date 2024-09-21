@@ -112,7 +112,7 @@ const SubCategory = () => {
       <div className="flex-1 p-10 text-black">
         <div className="bg-white shadow-md rounded-lg p-6 mb-6">
           <h2 className="text-xl font-semibold mb-4">
-            <span className="text-green-500 border-b-2 border-black-500 pb-1">
+            <span className="text-blue-500 border-b-2 border-black-500 pb-1">
               Add Subcategory:
             </span>
           </h2>
@@ -191,7 +191,7 @@ const SubCategory = () => {
             <div className="flex items-center justify-between">
               <button
                 type="submit"
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 {isEditing ? "Update SubCategory" : "Add SubCategory"}
               </button>
@@ -200,7 +200,7 @@ const SubCategory = () => {
         </div>
         <div className="bg-white shadow-md rounded-lg p-6">
           <h2 className="text-xl font-semibold mb-4">
-            <span className="text-green-500 border-b-2 border-black-500 pb-1">
+            <span className="text-blue-500 border-b-2 border-black-500 pb-1">
               Subcategory List:
             </span>
           </h2>
@@ -241,7 +241,7 @@ const SubCategory = () => {
                   <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                     <button
                       onClick={() => handleEdit(subCategory)}
-                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded focus:outline-none focus:shadow-outline mr-2"
+                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded focus:outline-none focus:shadow-outline mr-2"
                     >
                       Edit
                     </button>
