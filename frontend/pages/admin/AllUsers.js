@@ -64,7 +64,7 @@ const AllUsers = () => {
     <div className="flex">
       <Sidebar />
       <div className="flex-1 p-10 text-black">
-        <h1 className="text-3xl font-bold mb-6">All Users</h1>
+        <h1 className="text-3xl font-bold mb-6">Users</h1>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
             <thead className="bg-gray-200">

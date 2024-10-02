@@ -98,7 +98,7 @@ const ProductDetails = () => {
         <div className="flex">
           {/* Product Image */}
           <div className="flex flex-col w-2/5  py-10 px-4  ">
-            <div className="flex-1 bg-blue-500 mb-4">
+            <div className="flex-1 bg-white-500 mb-4">
             <Image
               src={`/${product.image}` || "/placeholder-image.jpg"}
               alt={`${product.name} image`}
@@ -132,7 +132,7 @@ const ProductDetails = () => {
           </div>
           {/* <div class="w-1/3 bg-gray-300 p-4 flex items-center"> */}
           {/* Product Info */}
-          <div className="flex flex-col w-1/4 p-8 w-1/2 item-left">
+          <div className="flex flex-col w-1/2 p-8 w-1/2 item-left">
 
             <div className="flex text-3xl font-extrabold text-gray-800 mb-4 item-left">{product.name}</div>
 
