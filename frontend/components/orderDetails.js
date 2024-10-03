@@ -39,6 +39,7 @@ const OrderDetails = ({ order }) => {
           render: "Payment verified successfully",
           type: "success",
         });
+        
         return;
       }
       toastManager.updateStatus(toastId, {
