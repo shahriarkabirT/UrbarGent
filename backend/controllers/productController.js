@@ -224,6 +224,7 @@ const getTrendingProducts = asyncHandler(async (req, res) => {
         name: "$productDetails.name",
         image: "$productDetails.image",
         slug: "$productDetails.slug",
+        price:"$productDetails.price"
       },
     },
   ]);
@@ -243,6 +244,7 @@ const getTrendingProducts = asyncHandler(async (req, res) => {
       name: product.name,
       image: product.image,
       slug: product.slug,
+      price: product.price
     }));
 
     // Combine topProducts and additionalProducts
