@@ -10,12 +10,12 @@ const ProductCard = ({ productData }) => {
   };
 
   return (
-    <div className="w-[100%] mx-auto bg-white  overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col justify-between h-full">
+    <div className="w-[100%] mx-auto bg-white rounded-md overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl flex flex-col justify-between h-full">
       {/* Image Section */}
       <img
         src={`/${image}`}
         alt={name}
-        className="w-full h-64 object-cover transition-transform duration-300 hover:scale-110 cursor-pointer"
+        className="w-full h-50 object-cover transition-transform duration-300 hover:scale-110 cursor-pointer"
         onClick={handleViewProduct}
       />
 

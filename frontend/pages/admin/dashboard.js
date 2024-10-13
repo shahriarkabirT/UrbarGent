@@ -78,7 +78,6 @@ const Dashboard = () => {
     }, 0);
   }, [sellReportData]);
 
-  // Calculate total sold this month
   const totalSoldThisMonth = useMemo(() => {
     const currentMonth = new Date().getMonth();
     const currentMonthData = sellReportData.find((item) => {
@@ -114,17 +113,15 @@ const Dashboard = () => {
       {
         label: "Income",
         data: revenuePercentages,
-        backgroundColor: "rgba(34, 197, 94)", // Greenish background
-        // borderColor: "rgba(34, 197, 94)", // Strong green border
+        backgroundColor: "rgba(34, 197, 94)", 
         borderWidth: 2,
       },
-      {
-        label: "Total Products Sold",
-        data: productsSoldPercentages,
-        backgroundColor: "rgba(59, 130, 246)", // Blueish background
-        // borderColor: "rgba(59, 130, 246, 1)", // Strong blue border
-        borderWidth: 2,
-      },
+      // {
+      //   label: "Total Products Sold",
+      //   data: productsSoldPercentages,
+      //   backgroundColor: "rgba(59, 130, 246)",
+      //   borderWidth: 2,
+      // },
     ],
   };
 
@@ -167,36 +164,31 @@ const Dashboard = () => {
     <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
       <div className="flex-1 p-10 text-black">
-      <h3 className="py-4 text-3xl font-extrabold mb-10 text-gray-900 text-center tracking-wide shadow-sm">
-  Admin Dashboard
-</h3>
-
-        {/* <p className="mb-8 text-gray-600">
-          Welcome to the Admin Dashboard. Here you can manage users, view
-          reports, and more.
-        </p> */}
-
-        {/* Stat Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-10">
-          <div className="bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-lg rounded-sm p-8">
-            <h2 className="text-2xl font-semibold mb-4">Total Revenue</h2>
-            <p className="text-3xl font-bold">{totalIncome} BDT</p>
+        <h3 className="py-4 text-3xl bg-[#1E3A8A] font-extrabold mb-10 text-white text-center tracking-wide shadow-sm">
+          Admin Dashboard
+        </h3>
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* Stat Cards */}
+          <div className="flex flex-col gap-6 flex-1">
+            <div className="bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-lg rounded-sm p-6">
+              <h2 className="text-2xl font-semibold mb-4">Total Revenue</h2>
+              <p className="text-3xl font-bold">{totalIncome} BDT</p>
+            </div>
+            <div className="bg-gradient-to-r from-green-500 to-green-400 text-white shadow-lg rounded-sm p-6">
+              <h2 className="text-2xl font-semibold mb-4">Total Products Sold</h2>
+              <p className="text-3xl font-bold">{totalProductsSold}</p>
+            </div>
+            <div className="bg-gradient-to-r from-purple-500 to-purple-400 text-white shadow-lg rounded-sm p-6">
+              <h2 className="text-2xl font-semibold mb-4">Total Sold This Month</h2>
+              <p className="text-3xl font-bold">{totalSoldThisMonth}</p>
+            </div>
           </div>
-          <div className="bg-gradient-to-r from-green-500 to-green-400 text-white shadow-lg rounded-sm p-8">
-            <h2 className="text-2xl font-semibold mb-4">Total Products Sold</h2>
-            <p className="text-3xl font-bold">{totalProductsSold}</p>
-          </div>
-          <div className="bg-gradient-to-r from-purple-500 to-purple-400 text-white shadow-lg rounded-sm p-8">
-            <h2 className="text-2xl font-semibold mb-4">Total Sold This Month</h2>
-            <p className="text-3xl font-bold">{totalSoldThisMonth}</p>
-          </div>
-        </div>
 
-        {/* Chart Section */}
-        <div className="bg-white shadow-lg rounded-sm p-8 text-center">
-          {/* <h2 className="text-xl font-semibold mb-6 text-gray-700">Sales Report</h2> */}
-          <div className="p-4">
-            <Bar data={data}  options={options} height={100} />
+          {/* Chart Section */}
+          <div className="flex-1 bg-white shadow-lg rounded-sm p-6 text-center">
+            <div className="p-4">
+              <Bar data={data} options={options} height={230} />
+            </div>
           </div>
         </div>
       </div>

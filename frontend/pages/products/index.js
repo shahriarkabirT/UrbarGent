@@ -34,7 +34,7 @@ const reducer = (state, action) => {
 const Products = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { data } = useFetchAllProductsQuery({
-    limit: 25,
+    limit: 8,
     page: state.currentPage,
     search: state.search,
     sort: state.sort,
@@ -66,7 +66,7 @@ const Products = () => {
       <div className="w-[80%] h-min-screen mx-auto text-center">
         <Filter state={state} dispatch={dispatch} />
 
-        <div className="grid grid-cols-1 gap-[25px] sm:grid-cols-2 lg:grid-cols-3 xl:gap-[50px] w-full my-16">
+        <div className="grid grid-cols-1 gap-[0px] sm:grid-cols-2 lg:grid-cols-4 xl:gap-[50px] w-full my-16">
           {state.products &&
             state.products.map((product) => (
               <ProductCard productData={product} key={product._id} />
