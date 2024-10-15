@@ -130,7 +130,7 @@ const ProductDetails = () => {
             
 
           </div>
-          {/* <div class="w-1/3 bg-gray-300 p-4 flex items-center"> */}
+          {/* <div className="w-1/3 bg-gray-300 p-4 flex items-center"> */}
           {/* Product Info */}
           <div className="flex flex-col w-1/2 p-8 w-1/2 item-left">
 

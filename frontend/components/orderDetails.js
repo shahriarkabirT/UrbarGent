@@ -112,7 +112,7 @@ const OrderDetails = ({ order }) => {
                     <div className="flex gap-2 items-center">
                       <Image
                         src={`/${item.product?.image}`}
-                        alt={item.product?.name}
+                        alt={`${item.product?.name} image` }
                         width={64}
                         height={48}
                         className="w-16 h-12 object-cover"
@@ -161,21 +161,21 @@ const OrderDetails = ({ order }) => {
           </h2>
           <p className="text-gray-500 pb-2">
             {order.paymentResult.status === "Success" ? (
-              <span class="w-1/4 bg-green-100 text-green-800 text-sm font-medium p-10 py-1 rounded-sm items-center gap-2">
+              <span className="w-1/4 bg-green-100 text-green-800 text-sm font-medium p-10 py-1 rounded-sm items-center gap-2">
                 Paid
               </span>
             ) : order.paymentResult.status === "Failed" ? (
               <div className="flex items-center gap-2">
                 <span
                   onClick={handlePaymentStatus}
-                  class="bg-red-100 cursor-pointer text-red-800 text-sm font-medium me-2 px-10 py-1 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400"
+                  className="bg-red-100 cursor-pointer text-red-800 text-sm font-medium me-2 px-10 py-1 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400"
                 >
                   Failed
                 </span>
                 <button
                   type="button"
                   onClick={handleAgainPayment}
-                  class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-1 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                  className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-1 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                 >
                   Complete Payment
                 </button>
@@ -183,7 +183,7 @@ const OrderDetails = ({ order }) => {
             ) : (
               <span
                 onClick={handlePaymentStatus}
-                class="bg-yellow-100 cursor-pointer text-yellow-800 text-sm font-medium me-2 px-10 py-1 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300"
+                className="bg-yellow-100 cursor-pointer text-yellow-800 text-sm font-medium me-2 px-10 py-1 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300"
               >
                 Pending
               </span>
@@ -194,23 +194,23 @@ const OrderDetails = ({ order }) => {
           </h2>
           <p className="text-gray-500 pb-4">
             {order.deliveryStatus === "Delivered" ? (
-              <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-8 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+              <span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-8 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
                 Delivered
               </span>
             ) : order.deliveryStatus === "Shipped" ? (
-              <span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-8 py-0.5 rounded dark:bg-gray-700 dark:text-indigo-400 border border-indigo-400">
+              <span className="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-8 py-0.5 rounded dark:bg-gray-700 dark:text-indigo-400 border border-indigo-400">
                 Shipped
               </span>
             ) : order.deliveryStatus === "Processing" ? (
-              <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-8 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
+              <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-8 py-0.5 rounded dark:bg-gray-700 dark:text-yellow-300 border border-yellow-300">
                 Processing
               </span>
             ) : order.deliveryStatus === "On-Hold" ? (
-              <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-8 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
+              <span className="bg-red-100 text-red-800 text-xs font-medium me-2 px-8 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">
                 On-Hold
               </span>
             ) : (
-              <span class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-8 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">
+              <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-8 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">
                 Initiated
               </span>
             )}

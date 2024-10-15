@@ -113,7 +113,7 @@ const Dashboard = () => {
       {
         label: "Income",
         data: revenuePercentages,
-        backgroundColor: "rgba(34, 197, 94)", 
+        backgroundColor: "black", 
         borderWidth: 2,
       },
       // {
@@ -170,15 +170,15 @@ const Dashboard = () => {
         <div className="flex flex-col lg:flex-row gap-10">
           {/* Stat Cards */}
           <div className="flex flex-col gap-6 flex-1">
-            <div className="bg-gradient-to-r from-blue-500 to-blue-400 text-white shadow-lg rounded-sm p-6">
+            <div className="bg-gradient-to-r from-blue-500 to-[#CED2CC] text-white shadow-lg rounded-sm p-6">
               <h2 className="text-2xl font-semibold mb-4">Total Revenue</h2>
               <p className="text-3xl font-bold">{totalIncome} BDT</p>
             </div>
-            <div className="bg-gradient-to-r from-green-500 to-green-400 text-white shadow-lg rounded-sm p-6">
+            <div className="bg-gradient-to-r from-[#7E909A] to-green-400 text-white shadow-lg rounded-sm p-6">
               <h2 className="text-2xl font-semibold mb-4">Total Products Sold</h2>
               <p className="text-3xl font-bold">{totalProductsSold}</p>
             </div>
-            <div className="bg-gradient-to-r from-purple-500 to-purple-400 text-white shadow-lg rounded-sm p-6">
+            <div className="bg-gradient-to-r from-purple-500 to-[#CED2CC] text-white shadow-lg rounded-sm p-6">
               <h2 className="text-2xl font-semibold mb-4">Total Sold This Month</h2>
               <p className="text-3xl font-bold">{totalSoldThisMonth}</p>
             </div>

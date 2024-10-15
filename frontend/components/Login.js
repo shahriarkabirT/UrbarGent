@@ -71,12 +71,12 @@ export default function Login({path}) {
           />
         </div>
         <button type="submit">{isLoading ? "Logging in..." : "Login"}</button>
-        <div class="flex justify-center items-center my-2">
-          <span class="px-6 py-3 bg-gray-100 rounded-lg shadow-md text-gray-700 text-sm">
+        <div className="flex justify-center items-center my-2">
+          <span className="px-6 py-3 bg-gray-100 rounded-lg shadow-md text-gray-700 text-sm">
             Forgot password?
             <Link
               href="/auth/forget-password"
-              class="ml-2 font-semibold text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out hover:underline"
+              className="ml-2 font-semibold text-blue-600 hover:text-blue-800 transition duration-300 ease-in-out hover:underline"
             >
               Click here to reset password
             </Link>

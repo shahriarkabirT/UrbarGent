@@ -27,6 +27,13 @@ export const productApi = apiSlice.injectEndpoints({
       }),
       providesTags: ["Product"],
     }),
+    fetchProductById: builder.query({
+      query: (id) => ({
+        url: `${PRODUCT_URL}/id/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["Product"],
+    }),
     createNewProduct: builder.mutation({
       query: (product) => ({
         url: PRODUCT_URL,
@@ -50,6 +57,14 @@ export const productApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Product"],
     }),
+    updateProductQuantity: builder.mutation({
+      query: ({ id, quantity }) => ({
+        url: `${PRODUCT_URL}/quantity/${id}`, // Assuming you have this endpoint
+        method: "PATCH",
+        body: { quantity },
+      }),
+      invalidatesTags: ["Product"],
+    }),
     fetchCartProductsQuantity: builder.query({
       query: (products) => ({
         url: `${PRODUCT_URL}/quantity`,
@@ -70,9 +85,11 @@ export const productApi = apiSlice.injectEndpoints({
 export const {
   useFetchAllProductsQuery,
   useFetchProductBySlugQuery,
+  useLazyFetchProductByIdQuery,
   useCreateNewProductMutation,
   useDeleteProductMutation,
   useUpdateProductByIdMutation,
   useFetchCartProductsQuantityQuery,
   useFetchTopTrendingProductsQuery,
+  useUpdateProductQuantityMutation
 } = productApi;

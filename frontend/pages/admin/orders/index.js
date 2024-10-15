@@ -192,7 +192,7 @@ const ViewOrders = () => {
             type="text"
             value={searchValue}
             onChange={handleSearchChange}
-            placeholder="Search users..."
+            placeholder="Search by orderID..."
             className="border p-2 px-4 rounded-lg w-full md:w-1/3 shadow-lg focus:ring-2 focus:ring-blue-500 text-black"
           />
         </div>

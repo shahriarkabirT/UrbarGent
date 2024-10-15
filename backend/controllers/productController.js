@@ -78,6 +78,19 @@ const getProductBySlug = asyncHandler(async (req, res) => {
   res.status(200).json(product);
 });
 
+// @desc    Fetch single product
+// @route   GET /api/products/id/:id
+// @access  Public
+const getProductById = asyncHandler(async (req, res) => {
+  const product = await productModel.findOne({ _id: req.params.id });
+  if (!product) {
+    res.status(404);
+    throw new Error("Product not found");
+  }
+
+  res.status(200).json(product);
+});
+
 const createNewProduct = asyncHandler(async (req, res) => {
   const {
     name,
@@ -155,6 +168,30 @@ const updateProduct = asyncHandler(async (req, res) => {
   res.status(200).json({
     status: "success",
     message: "Product updated successfully",
+  });
+});
+
+// @desc    Update a product quantity
+// @route   PATCH /api/products/quantity/:id
+// @access  Private/User
+const updateProductQuantity = asyncHandler(async (req, res) => {
+  const product = await productModel.findOne({_id : req.params.id});
+  console.log(" f"+ product);
+  if (!product) {
+    res.status(404);
+    throw new Error("Product not found");
+  }
+
+  const { quantity } = req.body;
+
+  // Update only the quantity field
+  product.quantity = quantity;
+  await product.save();
+
+  res.status(200).json({
+    status: "success",
+    message: "Product quantity updated successfully",
+    data: { quantity: product.quantity },
   });
 });
 
@@ -257,8 +294,10 @@ const getTrendingProducts = asyncHandler(async (req, res) => {
 export {
   getProducts,
   getProductBySlug,
+  getProductById,
   createNewProduct,
   updateProduct,
   deleteProduct,
   getTrendingProducts,
+  updateProductQuantity,
 };

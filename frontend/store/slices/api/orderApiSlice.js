@@ -66,6 +66,7 @@ export const {
   useCreateOrderMutation,
   useUpdatePaymentStatusMutation,
   useFetchAllOrdersQuery,
+  useLazyFetchOrderByIdQuery,
   useFetchMyOrdersQuery,
   useFetchOrderByIdQuery,
   useUpdateDeliveryStatusMutation,
