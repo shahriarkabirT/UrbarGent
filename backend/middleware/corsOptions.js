@@ -1,5 +1,5 @@
 const corsOptions = {
-  origin: [`http://localhost:3000`, `http://localhost:3001`],
+  origin: [`https://urbar-gent-a01d6y34d.vercel.app`, `http://localhost:3001`],
   credentials: true,
 };
 
