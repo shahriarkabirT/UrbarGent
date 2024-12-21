@@ -46,17 +46,9 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/contact", contactRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  const buildPath = path.join(__dirname, "frontend", "build");
-  console.log(`Serving static files from: ${buildPath}`);
-
-  app.use(express.static(buildPath));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(buildPath, "index.html"), (err) => {
-      if (err) {
-        console.error("Error serving index.html:", err);
-        res.status(500).send("Something went wrong!");
-      }
-    });
+  app.use("/uploads", express.static("/var/data/uploads")); // For static uploads
+  app.get("/", (req, res) => {
+    res.send("Backend API is running...");
   });
 }
 else {
