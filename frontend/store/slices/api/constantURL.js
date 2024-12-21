@@ -1,4 +1,4 @@
-export const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+export const BASE_URL = "https://urbargent.onrender.com/";
 export const AUTH_URL = `/api/auth`;
 export const USER_URL = `/api/users`;
 export const PRODUCT_URL = `/api/products`;
