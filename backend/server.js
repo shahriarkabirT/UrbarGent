@@ -46,7 +46,7 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/contact", contactRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  app.use("/uploads", express.static("/var/data/uploads"));
+  app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Use local uploads directory
   app.use(express.static(path.join(__dirname, "/frontend/build")));
   app.get("*", (req, res) =>
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
