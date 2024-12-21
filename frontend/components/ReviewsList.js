@@ -93,7 +93,7 @@ const ReviewsList = ({ productId }) => {
           <div key={review._id} className="mb-4 border-b pb-4">
             {editingReview === review._id ? (
               <div>
-                <h3 className="text-lg font-semibold">{review.user}</h3>
+                <h3 className="text-lg font-semibold">{review?.user}</h3>
                 <input
                   type="number"
                   value={editForm.rating}
@@ -112,7 +112,7 @@ const ReviewsList = ({ productId }) => {
               </div>
             ) : (
               <div>
-                <h3 className="text-lg font-semibold">{review.user}</h3>
+                <h3 className="text-lg font-semibold">{review.user?.name}</h3>
                 <div className="text-yellow-500 flex">
                   {renderStars(review.rating)}
                 </div>

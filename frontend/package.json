@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://urbargent.onrender.com/",
+  "proxy": "http://localhost:5001",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
