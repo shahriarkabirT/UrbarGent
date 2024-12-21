@@ -22,7 +22,7 @@ const verify = () => {
 
     try {
       const res = await Axios.post(
-        `http://localhost:5001/api/auth/verify/${email}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/verify/${email}`,
         {
           otp,
         }
@@ -42,7 +42,7 @@ const verify = () => {
     setIsVerifying(true);
     try {
       const res = await Axios.get(
-        `http://localhost:5001/api/auth/verify/${email}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/verify/${email}`
       );
 
       toast.success("A new otp has been sent. Check your email");

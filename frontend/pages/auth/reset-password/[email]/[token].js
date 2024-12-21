@@ -24,7 +24,7 @@ const resetPassword = () => {
   };
 
   useEffect(() => {
-    const resetURL = `http://localhost:5001/api/auth/reset-password/${email}/${token}`;
+    const resetURL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/reset-password/${email}/${token}`;
 
     async function isValidToken() {
       if (!email || !token) {
@@ -71,7 +71,7 @@ const resetPassword = () => {
 
     try {
       const res = await Axios.post(
-        `http://localhost:5001/api/auth/reset-password/${email}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/reset-password/${email}`,
         {
           password,
           token,

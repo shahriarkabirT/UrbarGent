@@ -18,7 +18,7 @@ const forgetpassword = () => {
     }
     try {
       const res = await Axios.post(
-        `http://localhost:5001/api/auth/forget-password`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/forget-password`,
         {
           email,
         }

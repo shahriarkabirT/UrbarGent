@@ -32,7 +32,7 @@ const register = () => {
       return;
     }
     const toastId = toastManager.loading("Registering...");
-    const reqURL = "http://localhost:5001/api/auth/register";
+    const reqURL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/auth/register`;
     try {
       const res = await Axios.post(reqURL, formObject);
       form.reset();
