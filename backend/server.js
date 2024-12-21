@@ -46,12 +46,20 @@ app.use("/api/reviews", reviewRoutes);
 app.use("/api/contact", contactRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Use local uploads directory
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-  );
-} else {
+  const buildPath = path.join(__dirname, "frontend", "build");
+  console.log(`Serving static files from: ${buildPath}`);
+
+  app.use(express.static(buildPath));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(buildPath, "index.html"), (err) => {
+      if (err) {
+        console.error("Error serving index.html:", err);
+        res.status(500).send("Something went wrong!");
+      }
+    });
+  });
+}
+else {
   app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
   app.get("/", (req, res) => {
     res.send("API is running....");
